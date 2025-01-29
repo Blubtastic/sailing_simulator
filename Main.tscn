@@ -1,0 +1,152 @@
+[gd_scene load_steps=22 format=3 uid="uid://cafnv34qwaugv"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_8vrip"]
+[ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://Ocean.tscn" id="2_c3qin"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_afme8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_t486m"]
+sky_material = SubResource("ProceduralSkyMaterial_afme8")
+
+[sub_resource type="Environment" id="Environment_ghl4y"]
+background_mode = 2
+sky = SubResource("Sky_t486m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_li1u0"]
+colors = PackedColorArray(0, 0, 0.270588, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ar1jp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kwngd"]
+color_ramp = SubResource("Gradient_li1u0")
+noise = SubResource("FastNoiseLite_ar1jp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jobp8"]
+albedo_texture = SubResource("NoiseTexture2D_kwngd")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_50dx0"]
+material = SubResource("StandardMaterial3D_jobp8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shw08"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kkyb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8tf3o"]
+material = SubResource("StandardMaterial3D_4kkyb")
+size = Vector3(1, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v7ss"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_g6ugl"]
+material = SubResource("StandardMaterial3D_7v7ss")
+size = Vector3(2, 2, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_83p8v"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x0nct"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 3.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e3k7f"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 5.5
+
+[sub_resource type="PrismMesh" id="PrismMesh_b122e"]
+left_to_right = 0.0
+size = Vector3(3.3, 4.3, 0.1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_jbobt"]
+left_to_right = 0.0
+size = Vector3(2.3, 4.75, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x36fr"]
+size = Vector3(1, 5, 140)
+
+[node name="Root" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.342019, 0.877752, 0.335522, -0.364723, 0.205066, -0.908254, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 120.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ghl4y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 93.2267, 100, -37.2878)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_50dx0")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_8vrip")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_shw08")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0.4)
+mesh = SubResource("BoxMesh_8tf3o")
+
+[node name="Tip" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 0, 0.114685, -2)
+mesh = SubResource("PrismMesh_g6ugl")
+
+[node name="Column1" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97384, -0.361198)
+mesh = SubResource("CylinderMesh_83p8v")
+
+[node name="Bow" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.00417, 1.37281)
+mesh = SubResource("CylinderMesh_x0nct")
+
+[node name="WireFront" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.893943, -0.448181, 0, 0.448181, 0.893943, 0, 2.99904, -1.66376)
+mesh = SubResource("CylinderMesh_e3k7f")
+
+[node name="MainSail" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.30746, 1.36208)
+mesh = SubResource("PrismMesh_b122e")
+
+[node name="FrontSail" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.07094, -1.58709)
+mesh = SubResource("PrismMesh_jbobt")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 50.0
+offset_top = 60.0
+offset_right = 108.0
+offset_bottom = 159.0
+grow_horizontal = 2
+rotation = 1.5708
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "-->"
+
+[node name="Wall" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.87, 2.5, -20.9924)
+mesh = SubResource("BoxMesh_x36fr")
+
+[node name="Ocean" parent="." instance=ExtResource("2_c3qin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0.2, 0)

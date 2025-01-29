@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceafak8wdkgby"]
+
+[ext_resource type="Shader" path="res://ocean.gdshader" id="1_cbg4c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8cs1"]
+render_priority = 0
+shader = ExtResource("1_cbg4c")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1nxu7"]
+material = SubResource("ShaderMaterial_o8cs1")
+size = Vector2(300, 300)
+
+[node name="Ocean" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1nxu7")
