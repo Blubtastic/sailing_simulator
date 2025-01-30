@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cafnv34qwaugv"]
+[gd_scene load_steps=30 format=3 uid="uid://cafnv34qwaugv"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8vrip"]
 [ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://Ocean.tscn" id="2_c3qin"]
@@ -70,8 +70,41 @@ size = Vector3(3.3, 4.3, 0.1)
 left_to_right = 0.0
 size = Vector3(2.3, 4.75, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr6k2"]
+albedo_color = Color(0.11, 0.11, 0.11, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_x36fr"]
+material = SubResource("StandardMaterial3D_jr6k2")
 size = Vector3(1, 5, 140)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hqwm8"]
+material = SubResource("StandardMaterial3D_jr6k2")
+size = Vector3(1, 5, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kobvs"]
+albedo_color = Color(0.11, 0.11, 0.11, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gvufa"]
+material = SubResource("StandardMaterial3D_kobvs")
+top_radius = 0.4
+bottom_radius = 0.7
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owjnx"]
+albedo_color = Color(0.74, 0.493333, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_id0lq"]
+material = SubResource("StandardMaterial3D_owjnx")
+size = Vector3(20, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4oke"]
+albedo_color = Color(0.68, 0.430667, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_iftn8"]
+material = SubResource("StandardMaterial3D_y4oke")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 4.0
 
 [node name="Root" type="Node3D"]
 
@@ -142,11 +175,58 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
 text = "-->"
 
+[node name="Ocean" parent="." instance=ExtResource("2_c3qin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.1799, 0.2, 0)
+
 [node name="Wall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.552, 0, 28.5215)
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.87, 2.5, -20.9924)
 mesh = SubResource("BoxMesh_x36fr")
 
-[node name="Ocean" parent="." instance=ExtResource("2_c3qin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0.2, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3856, 0, -130.253)
+mesh = SubResource("BoxMesh_x36fr")
+
+[node name="Wall3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 141.396, 0, -32.2778)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-06, 0, 44.9222)
+mesh = SubResource("BoxMesh_hqwm8")
+
+[node name="Mountain" type="StaticBody3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 164.756, 13, -56.2458)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.559719, 0, -0.542465)
+mesh = SubResource("CylinderMesh_gvufa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mountain"]
+
+[node name="Goal" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.8943, 1.46357, -91.5385)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614679, 0)
+mesh = SubResource("BoxMesh_id0lq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.61792, 0.176058, 3.72601)
+mesh = SubResource("CylinderMesh_iftn8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57523, 0.176058, 3.72601)
+mesh = SubResource("CylinderMesh_iftn8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.61792, 0.176058, -3.66106)
+mesh = SubResource("CylinderMesh_iftn8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57523, 0.176058, -3.66106)
+mesh = SubResource("CylinderMesh_iftn8")
