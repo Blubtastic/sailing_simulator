@@ -131,9 +131,17 @@ far = 170.79
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cm0pq")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 93.2267, 100, -37.2878)
-visible = false
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.421907, -0.762049, 0.491198, 0.296868, 0.628029, 0.719339, -0.856658, -0.157674, 0.491198, 0, 30.8504, 0)
+light_color = Color(1, 1, 0.784314, 1)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="WindParticles" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 108.808, 10, 55.2814)
+
+[node name="Ocean" parent="." instance=ExtResource("2_c3qin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.18, -0.5, 0)
 
 [node name="TunicGround" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 12)
@@ -211,9 +219,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
 text = "-->"
 
-[node name="Ocean" parent="." instance=ExtResource("2_c3qin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.18, -0.5, 0)
-
 [node name="Wall" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.552, 0, 28.5215)
 visible = false
@@ -268,16 +273,11 @@ mesh = SubResource("CylinderMesh_iftn8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57523, 0.176058, -3.66106)
 mesh = SubResource("CylinderMesh_iftn8")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.421907, -0.762049, 0.491198, 0.296868, 0.628029, 0.71934, -0.856658, -0.157674, 0.491198, 0, 30.8504, 0)
-light_color = Color(1, 1, 0.784314, 1)
-light_energy = 0.2
-shadow_enabled = true
-
 [node name="OldGround" type="MeshInstance3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
 visible = false
 mesh = SubResource("PlaneMesh_50dx0")
 
-[node name="WindParticles" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 108.808, 10, 55.2814)
+[node name="OldCamera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 93.2267, 100, -37.2878)
+visible = false

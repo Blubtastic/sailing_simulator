@@ -13,6 +13,7 @@ uniform vec2 tile = vec2(5.0, 5.0);
 uniform float height = 2.0;
 uniform vec2 wave_size = vec2(2.0, 2.0);
 uniform float wave_speed = 1.5;
+uniform float wave_movement = 0.05;
 
 const float M_2PI = 6.283185307;
 const float M_6PI = 18.84955592;
@@ -169,9 +170,9 @@ vec3 water(vec2 uv, vec3 cdir, float iTime)
     	sin(d1) * 0.15 + sin(d2) * 0.05,
     	cos(d1) * 0.15 + cos(d2) * 0.05
     );
-
-    vec3 ret = mix(WATER_COL.rgb, WATER2_COL.rgb, waterlayer(uv + dist.xy));
-    ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx));
+	float xSpeed = TIME * wave_movement;
+    vec3 ret = mix(WATER_COL.rgb, WATER2_COL.rgb, waterlayer(uv + dist.xy + xSpeed));
+    ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx - xSpeed));
     return ret;
 }
 
@@ -193,6 +194,6 @@ void vertex(){
 void fragment()
 {
 	vec2 uv = UV;
-
-    ALBEDO = vec3(water(uv * tile, vec3(0,1,0), TIME * distortion_speed));
+	
+	ALBEDO = vec3(water(uv * tile, vec3(0,1,0), TIME * distortion_speed));
 }
