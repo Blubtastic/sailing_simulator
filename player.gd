@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const ACCELLERATE_VEC = Vector3(0, 0, -10)
-const ROTATE_ANGLE = 2
+const ROTATE_ANGLE = 3
 const ACCELERATION = 0.2
 const MAX_SPEED = 25
 const MAX_WIND_ANGLE = 35

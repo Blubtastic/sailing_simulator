@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvkuc6rqfg87k"]
+
+[sub_resource type="Curve" id="Curve_68pvr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.135802, 0.314607), 0.0, 0.0, 0, 0, Vector2(0.753087, 0.359551), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_mq10k"]
+curve = SubResource("Curve_68pvr")
+
+[sub_resource type="Curve" id="Curve_15g4v"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1.49012e-08), 0.0, 0.0, 0, 0, Vector2(0.251029, 1), 0.0, 0.0, 0, 0, Vector2(0.5, -1), 0.0, 0.0, 0, 0, Vector2(0.748971, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.49012e-08), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_njruw"]
+curve_z = SubResource("Curve_15g4v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_68pvr"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(25, 1, 80)
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.1, 1)
+spread = 0.0
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+directional_velocity_min = 9.99998
+directional_velocity_max = 9.99998
+directional_velocity_curve = SubResource("CurveXYZTexture_njruw")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 1.4
+alpha_curve = SubResource("CurveTexture_mq10k")
+turbulence_noise_scale = 0.24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68pvr"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mq10k"]
+material = SubResource("StandardMaterial3D_68pvr")
+radius = 0.2
+radial_segments = 4
+rings = 4
+
+[node name="WindParticles" type="Node3D"]
+
+[node name="Wind" type="GPUParticles3D" parent="."]
+amount = 64
+lifetime = 6.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_68pvr")
+draw_pass_1 = SubResource("CapsuleMesh_mq10k")

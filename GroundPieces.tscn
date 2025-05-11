@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmy8yniwuwq4b"]
+
+[ext_resource type="PackedScene" uid="uid://5crdvjync5b8" path="res://assets/Ground.blend" id="1_r6y6x"]
+
+[node name="Library" type="Node3D"]
+
+[node name="Ground" parent="." instance=ExtResource("1_r6y6x")]
