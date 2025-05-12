@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cafnv34qwaugv"]
+[gd_scene load_steps=18 format=3 uid="uid://cafnv34qwaugv"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_8vrip"]
 [ext_resource type="PackedScene" uid="uid://dvkuc6rqfg87k" path="res://Wind.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://bat5slvwvareg" path="res://assets/WindThingie.tscn" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://dxb6dbpv60st0" path="res://TestingLevel.tscn" id="5_3dxm6"]
+[ext_resource type="Script" uid="uid://bvv5exoewetl5" path="res://wind_thingie.gd" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://c53j1d8lrwb6m" path="res://assets/WindArrow.tscn" id="6_3dxm6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_shw08"]
 size = Vector3(1, 1, 5)
@@ -100,18 +103,13 @@ mesh = SubResource("PrismMesh_jbobt")
 
 [node name="TestingLevel" parent="." instance=ExtResource("5_3dxm6")]
 
-[node name="WindArrow" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 50.0
-offset_top = 60.0
-offset_right = 108.0
-offset_bottom = 159.0
-grow_horizontal = 2
-rotation = 1.5708
-size_flags_horizontal = 4
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "-->"
+[node name="WindGauge" type="Node2D" parent="."]
+position = Vector2(1794, -51)
+
+[node name="WindThingie" parent="WindGauge" instance=ExtResource("4_fos0i")]
+position = Vector2(200, 203)
+scale = Vector2(2.7, 2.7)
+script = ExtResource("5_fos0i")
+
+[node name="WindArrow2" parent="WindGauge" instance=ExtResource("6_3dxm6")]
+position = Vector2(305, 203)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bat5slvwvareg"]
+
+[node name="WindThingie" type="Node2D"]
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(-20, -26)
+points = PackedVector2Array(-2, 1, 21, -3, 43, 1, 20, 25, 7, 7, 32, 5, 18, 15)
+default_color = Color(0.384314, 0.384314, 0.384314, 0.305882)
+begin_cap_mode = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-46, -44)
+points = PackedVector2Array(46, 55, 50.3176, 48.0543, 56.3696, 38.3185, 69, 19, 78, 39, 71, 64, 46, 75, 24, 65, 13, 44, 24, 19, 46, 55)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="."]
+position = Vector2(-46, -44)
+points = PackedVector2Array(46, 62, 56, 56, 60, 48, 67, 33, 72, 41, 65, 59, 46, 72, 29, 64, 18, 47, 24, 33, 32, 43, 25, 47, 33, 59, 34, 49, 42, 62)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
