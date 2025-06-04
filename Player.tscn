@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=3 uid="uid://cvm6vuoecgvb5"]
+
+[ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://c7u1gt30hay88" path="res://assets/WindSpeedCircle.blend" id="2_kpjcp"]
+[ext_resource type="Script" uid="uid://drif5saadniow" path="res://wind_gauge.gd" id="3_e80uo"]
+[ext_resource type="PackedScene" uid="uid://bhwnu8n4j7jho" path="res://assets/WindPointer.blend" id="4_cxr5p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhfnw"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpjcp"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kne1u"]
+material = SubResource("StandardMaterial3D_kpjcp")
+size = Vector3(1, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e80uo"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_cxr5p"]
+material = SubResource("StandardMaterial3D_e80uo")
+size = Vector3(2, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdg3f"]
+albedo_color = Color(0.366595, 0.366595, 0.366595, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dtqjt"]
+material = SubResource("StandardMaterial3D_tdg3f")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5ncpa"]
+material = SubResource("StandardMaterial3D_tdg3f")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 3.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wi0c6"]
+material = SubResource("StandardMaterial3D_tdg3f")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 5.5
+
+[sub_resource type="PrismMesh" id="PrismMesh_hp6x6"]
+material = SubResource("StandardMaterial3D_tdg3f")
+left_to_right = 0.0
+size = Vector3(3.3, 4.3, 0.1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_3tkgg"]
+material = SubResource("StandardMaterial3D_tdg3f")
+left_to_right = 0.0
+size = Vector3(2.3, 4.75, 0.1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_xhfnw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xhfnw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0.4)
+mesh = SubResource("BoxMesh_kne1u")
+
+[node name="Tip2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 0, 0.114685, -2)
+mesh = SubResource("PrismMesh_cxr5p")
+
+[node name="Column2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97384, -0.361198)
+mesh = SubResource("CylinderMesh_dtqjt")
+
+[node name="Bow2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.00417, 1.37281)
+mesh = SubResource("CylinderMesh_5ncpa")
+
+[node name="WireFront2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.893943, -0.448181, 0, 0.448181, 0.893943, 0, 2.99904, -1.66376)
+mesh = SubResource("CylinderMesh_wi0c6")
+
+[node name="MainSail2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.30746, 1.36208)
+mesh = SubResource("PrismMesh_hp6x6")
+
+[node name="FrontSail2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.07094, -1.58709)
+mesh = SubResource("PrismMesh_3tkgg")
+
+[node name="WindHUD" type="Node3D" parent="."]
+
+[node name="WindSpeedCircle" parent="WindHUD" instance=ExtResource("2_kpjcp")]
+
+[node name="WindGauge" type="Node3D" parent="WindHUD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+script = ExtResource("3_e80uo")
+
+[node name="RayCast3D" type="RayCast3D" parent="WindHUD/WindGauge"]
+target_position = Vector3(0, 0, -20)
+collision_mask = 512
+
+[node name="WindPointer" parent="WindHUD/WindGauge" instance=ExtResource("4_cxr5p")]

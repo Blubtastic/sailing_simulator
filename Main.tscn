@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://cafnv34qwaugv"]
+[gd_scene load_steps=8 format=3 uid="uid://cafnv34qwaugv"]
 
-[ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_8vrip"]
+[ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://Player.tscn" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dvkuc6rqfg87k" path="res://Wind.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://bat5slvwvareg" path="res://assets/WindThingie.tscn" id="4_fos0i"]
 [ext_resource type="PackedScene" uid="uid://dxb6dbpv60st0" path="res://TestingLevel.tscn" id="5_3dxm6"]
@@ -8,55 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c53j1d8lrwb6m" path="res://assets/WindArrow.tscn" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/Sailboat.blend" id="7_lgr22"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_shw08"]
-size = Vector3(1, 1, 5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kkyb"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8tf3o"]
-material = SubResource("StandardMaterial3D_4kkyb")
-size = Vector3(1, 1, 5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v7ss"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_g6ugl"]
-material = SubResource("StandardMaterial3D_7v7ss")
-size = Vector3(2, 2, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0du0"]
-albedo_color = Color(0.366595, 0.366595, 0.366595, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_83p8v"]
-material = SubResource("StandardMaterial3D_r0du0")
-top_radius = 0.1
-bottom_radius = 0.1
-height = 5.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_x0nct"]
-material = SubResource("StandardMaterial3D_r0du0")
-top_radius = 0.1
-bottom_radius = 0.1
-height = 3.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_e3k7f"]
-material = SubResource("StandardMaterial3D_r0du0")
-top_radius = 0.03
-bottom_radius = 0.03
-height = 5.5
-
-[sub_resource type="PrismMesh" id="PrismMesh_b122e"]
-material = SubResource("StandardMaterial3D_r0du0")
-left_to_right = 0.0
-size = Vector3(3.3, 4.3, 0.1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_jbobt"]
-material = SubResource("StandardMaterial3D_r0du0")
-left_to_right = 0.0
-size = Vector3(2.3, 4.75, 0.1)
-
 [node name="Root" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_lgr22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4178, -0.201088, 13.3625)
 
 [node name="IsometricCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866026, 0.5, 0.707107, -0.353553, 0.612372, 0, 40, 20)
@@ -66,41 +21,6 @@ far = 150.0
 
 [node name="WindParticles" parent="." instance=ExtResource("4_cm0pq")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 68.9386, 9.31548, 28.3901)
-
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0089, 0.5, 9.91004)
-script = ExtResource("1_8vrip")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("BoxShape3D_shw08")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0.4)
-mesh = SubResource("BoxMesh_8tf3o")
-
-[node name="Tip" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 0, 0.114685, -2)
-mesh = SubResource("PrismMesh_g6ugl")
-
-[node name="Column1" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97384, -0.361198)
-mesh = SubResource("CylinderMesh_83p8v")
-
-[node name="Bow" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.00417, 1.37281)
-mesh = SubResource("CylinderMesh_x0nct")
-
-[node name="WireFront" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.893943, -0.448181, 0, 0.448181, 0.893943, 0, 2.99904, -1.66376)
-mesh = SubResource("CylinderMesh_e3k7f")
-
-[node name="MainSail" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.30746, 1.36208)
-mesh = SubResource("PrismMesh_b122e")
-
-[node name="FrontSail" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.07094, -1.58709)
-mesh = SubResource("PrismMesh_jbobt")
 
 [node name="TestingLevel" parent="." instance=ExtResource("5_3dxm6")]
 

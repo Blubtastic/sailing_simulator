@@ -59,6 +59,10 @@ ui_down={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_10="WindSpeedCircle"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
