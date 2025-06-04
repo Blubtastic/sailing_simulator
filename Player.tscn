@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://b6nigney6ibiy" path="res://wind_speed_circle.gd" id="2_e80uo"]
 [ext_resource type="PackedScene" uid="uid://c7u1gt30hay88" path="res://assets/WindSpeedCircle.blend" id="2_kpjcp"]
 [ext_resource type="Script" uid="uid://drif5saadniow" path="res://wind_gauge.gd" id="3_e80uo"]
-[ext_resource type="PackedScene" uid="uid://bhwnu8n4j7jho" path="res://assets/WindPointer.blend" id="4_cxr5p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhfnw"]
 size = Vector3(1, 1, 5)
@@ -89,14 +89,14 @@ mesh = SubResource("PrismMesh_3tkgg")
 
 [node name="WindHUD" type="Node3D" parent="."]
 
-[node name="WindSpeedCircle" parent="WindHUD" instance=ExtResource("2_kpjcp")]
+[node name="WindSpeedCircle" type="Node3D" parent="WindHUD"]
+script = ExtResource("2_e80uo")
+
+[node name="Mesh" parent="WindHUD/WindSpeedCircle" instance=ExtResource("2_kpjcp")]
 
 [node name="WindGauge" type="Node3D" parent="WindHUD"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 script = ExtResource("3_e80uo")
 
-[node name="RayCast3D" type="RayCast3D" parent="WindHUD/WindGauge"]
+[node name="SpeedRayCast" type="RayCast3D" parent="WindHUD/WindGauge"]
 target_position = Vector3(0, 0, -20)
 collision_mask = 512
-
-[node name="WindPointer" parent="WindHUD/WindGauge" instance=ExtResource("4_cxr5p")]

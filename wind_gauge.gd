@@ -1,7 +1,6 @@
 extends Node3D
-@onready var raycast: RayCast3D = $RayCast3D
+@onready var raycast: RayCast3D = $SpeedRayCast
 @onready var wind_pointer: Node3D = $WindPointer
-
 
 func _physics_process(delta: float) -> void:
 	var wind_angle = Globals.wind_direction - rotation_degrees.y
