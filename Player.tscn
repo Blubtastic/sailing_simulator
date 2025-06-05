@@ -89,10 +89,10 @@ mesh = SubResource("PrismMesh_3tkgg")
 
 [node name="WindHUD" type="Node3D" parent="."]
 
-[node name="WindSpeedCircle" type="Node3D" parent="WindHUD"]
+[node name="WindSpeedCircle2" parent="WindHUD" instance=ExtResource("2_kpjcp")]
 script = ExtResource("2_e80uo")
 
-[node name="Mesh" parent="WindHUD/WindSpeedCircle" instance=ExtResource("2_kpjcp")]
+[node name="UIHitbox" type="MeshInstance3D" parent="WindHUD/WindSpeedCircle2"]
 
 [node name="WindGauge" type="Node3D" parent="WindHUD"]
 script = ExtResource("3_e80uo")

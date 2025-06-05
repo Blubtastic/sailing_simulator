@@ -46,7 +46,9 @@ _subresources={
 "nodes": {
 "PATH:Plane_001": {
 "mesh_instance/cast_shadow": 0,
-"mesh_instance/layers": 512
+"mesh_instance/layers": 512,
+"physics/layer": 512,
+"physics/mask": 512
 }
 }
 }
