@@ -2,37 +2,28 @@ extends CharacterBody3D
 
 @onready var wind_speed_circle: Node3D = $WindHUD/WindSpeedCircle
 
-const ACCELLERATE_VEC = Vector3(0, 0, -10)
-const ROTATE_ANGLE = 1.5
-const MAX_WIND_ANGLE = 35
-var max_speed = 10
-var acceleration = 0.2
-var current_velocity = 0
+const ROTATE_FORCE = 3.0
+const ROTATE_MAX_SPEED = 0.6
+var rotate_speed = 0.0
 
-# TODO: use wind_speed_circle.get_speed() to calculate wind speed.
-# Remove MAX_WIND_ANGLE. The player only knows about the speed from wind_speed_circle
-# and calculates its speed from that.
+const SPEED_FORCE = 1.0
+var speed = 0.0
 
 func _physics_process(delta: float) -> void:
+	
+	# ROTATION
 	if Input.is_action_pressed("ui_left"):
-		rotation.y += ROTATE_ANGLE * delta
+		rotate_speed = lerpf(rotate_speed, ROTATE_MAX_SPEED, ROTATE_FORCE*delta)
 	if Input.is_action_pressed("ui_right"):
-		rotation.y -= ROTATE_ANGLE * delta
-	move_and_slide()
-	max_speed = wind_speed_circle.get_speed()
-	#print(max_speed)
+		rotate_speed = lerpf(rotate_speed, -ROTATE_MAX_SPEED, ROTATE_FORCE*delta)
+	if not Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left"):
+		# Grind rotation to a halt
+		rotate_speed = lerpf(rotate_speed, 0.0, ROTATE_FORCE*2*delta)
+	rotation.y = lerp_angle(rotation.y, rotation.y+rotate_speed, 4.0*delta)
 	
+	# SPEED
 	var velocity_direction = global_transform.basis.z
-	#var velocity_increase = ACCELLERATE_VEC.rotated(Vector3.UP, rotation.y) * delta * 1
-	
-	var wind_angle = Globals.wind_direction - rotation_degrees.y
-	var is_headwind = abs(wind_angle) < MAX_WIND_ANGLE
-	if !is_headwind:
-		current_velocity = clamp(0, current_velocity+acceleration, max_speed)
-		velocity = velocity_direction * -current_velocity
-	else:
-		if current_velocity > 0:
-			current_velocity = clamp(0, current_velocity-acceleration*2, max_speed)
-		else:
-			current_velocity = 0
-		velocity = velocity_direction * -current_velocity
+	var wind_speed = wind_speed_circle.get_speed()
+	speed = lerpf(speed, wind_speed, SPEED_FORCE*delta)
+	velocity = velocity_direction * -speed
+	move_and_slide()
