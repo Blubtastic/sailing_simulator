@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c7u1gt30hay88"
-path="res://.godot/imported/WindSpeedCircle.blend-a6bc717db316ec0c1b4b02944029b673.scn"
+uid="uid://bwi1ex1uc5rtt"
+path="res://.godot/imported/WindArrow.blend-73a6d8ca728ef98417e27be38b92a452.scn"
 
 [deps]
 
-source_file="res://assets/WindSpeedCircle.blend"
-dest_files=["res://.godot/imported/WindSpeedCircle.blend-a6bc717db316ec0c1b4b02944029b673.scn"]
+source_file="res://assets/blender/WindArrow.blend"
+dest_files=["res://.godot/imported/WindArrow.blend-73a6d8ca728ef98417e27be38b92a452.scn"]
 
 [params]
 
@@ -21,8 +21,8 @@ nodes/import_as_skeleton_bones=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
-meshes/create_shadow_meshes=false
-meshes/light_baking=0
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
@@ -32,26 +32,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"meshes": {
-"WindSpeedCircle_Plane_001": {
-"generate/lightmap_uv": 2,
-"generate/lods": 0,
-"generate/shadow_meshes": 2,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": false,
-"save_to_file/path": ""
-}
-},
-"nodes": {
-"PATH:Plane_001": {
-"mesh_instance/cast_shadow": 0,
-"mesh_instance/layers": 512,
-"physics/layer": 512,
-"physics/mask": 512
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

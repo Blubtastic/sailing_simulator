@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhwnu8n4j7jho"
-path="res://.godot/imported/WindPointer.blend-fc8049dedea32996f8e101d4078dadb3.scn"
+uid="uid://5crdvjync5b8"
+path="res://.godot/imported/Ground.blend-6d270085bb6ff4d8587b77faaafd845d.scn"
 
 [deps]
 
-source_file="res://assets/WindPointer.blend"
-dest_files=["res://.godot/imported/WindPointer.blend-fc8049dedea32996f8e101d4078dadb3.scn"]
+source_file="res://assets/blender/Ground.blend"
+dest_files=["res://.godot/imported/Ground.blend-6d270085bb6ff4d8587b77faaafd845d.scn"]
 
 [params]
 

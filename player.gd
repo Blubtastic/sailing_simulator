@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var wind_speed_circle: Node3D = $WindHUD/WindSpeedCircle
+
 const ACCELLERATE_VEC = Vector3(0, 0, -10)
 const ROTATE_ANGLE = 3
 const ACCELERATION = 0.2

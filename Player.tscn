@@ -1,12 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=14 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
-[ext_resource type="Script" uid="uid://b6nigney6ibiy" path="res://wind_speed_circle.gd" id="2_e80uo"]
-[ext_resource type="PackedScene" uid="uid://c7u1gt30hay88" path="res://assets/WindSpeedCircle.blend" id="2_kpjcp"]
-[ext_resource type="Script" uid="uid://drif5saadniow" path="res://wind_gauge.gd" id="3_e80uo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xhfnw"]
-size = Vector3(1, 1, 5)
+[ext_resource type="PackedScene" uid="uid://dfyl3xkj6qdo1" path="res://boat_ui_wind/wind_speed_circle.tscn" id="2_kne1u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpjcp"]
 albedo_color = Color(0, 0, 0, 1)
@@ -53,50 +48,52 @@ material = SubResource("StandardMaterial3D_tdg3f")
 left_to_right = 0.0
 size = Vector3(2.3, 4.75, 0.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhfnw"]
+size = Vector3(1, 1, 5)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_xhfnw")
+[node name="BoatMesh" type="Node3D" parent="."]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0.4)
 mesh = SubResource("BoxMesh_kne1u")
+skeleton = NodePath("../..")
 
-[node name="Tip2" type="MeshInstance3D" parent="."]
+[node name="Tip2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 0, 0.114685, -2)
 mesh = SubResource("PrismMesh_cxr5p")
+skeleton = NodePath("../..")
 
-[node name="Column2" type="MeshInstance3D" parent="."]
+[node name="Column2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97384, -0.361198)
 mesh = SubResource("CylinderMesh_dtqjt")
+skeleton = NodePath("../..")
 
-[node name="Bow2" type="MeshInstance3D" parent="."]
+[node name="Bow2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.00417, 1.37281)
 mesh = SubResource("CylinderMesh_5ncpa")
+skeleton = NodePath("../..")
 
-[node name="WireFront2" type="MeshInstance3D" parent="."]
+[node name="WireFront2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(1, 0, 0, 0, 0.893943, -0.448181, 0, 0.448181, 0.893943, 0, 2.99904, -1.66376)
 mesh = SubResource("CylinderMesh_wi0c6")
+skeleton = NodePath("../..")
 
-[node name="MainSail2" type="MeshInstance3D" parent="."]
+[node name="MainSail2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.30746, 1.36208)
 mesh = SubResource("PrismMesh_hp6x6")
+skeleton = NodePath("../..")
 
-[node name="FrontSail2" type="MeshInstance3D" parent="."]
+[node name="FrontSail2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.07094, -1.58709)
 mesh = SubResource("PrismMesh_3tkgg")
+skeleton = NodePath("../..")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xhfnw")
 
 [node name="WindHUD" type="Node3D" parent="."]
 
-[node name="WindSpeedCircle2" parent="WindHUD" instance=ExtResource("2_kpjcp")]
-script = ExtResource("2_e80uo")
-
-[node name="UIHitbox" type="MeshInstance3D" parent="WindHUD/WindSpeedCircle2"]
-
-[node name="WindGauge" type="Node3D" parent="WindHUD"]
-script = ExtResource("3_e80uo")
-
-[node name="SpeedRayCast" type="RayCast3D" parent="WindHUD/WindGauge"]
-target_position = Vector3(0, 0, -20)
-collision_mask = 512
+[node name="WindSpeedCircle" parent="WindHUD" instance=ExtResource("2_kne1u")]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bwi1ex1uc5rtt"
-path="res://.godot/imported/WindArrow.blend-85de4682db3e6e234cd38ea8702ee3b8.scn"
+uid="uid://d372q328brype"
+path="res://.godot/imported/Sailboat.blend-fcb9cfabe53c539e89c5a7c2bc322d51.scn"
 
 [deps]
 
-source_file="res://assets/WindArrow.blend"
-dest_files=["res://.godot/imported/WindArrow.blend-85de4682db3e6e234cd38ea8702ee3b8.scn"]
+source_file="res://assets/blender/Sailboat.blend"
+dest_files=["res://.godot/imported/Sailboat.blend-fcb9cfabe53c539e89c5a7c2bc322d51.scn"]
 
 [params]
 

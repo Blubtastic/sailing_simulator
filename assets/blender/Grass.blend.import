@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d372q328brype"
-path="res://.godot/imported/Sailboat.blend-97763cb9495f71aed06ccadc687a7c2e.scn"
+uid="uid://xxv0sqnookuy"
+path="res://.godot/imported/Grass.blend-a2f5a8bbd592f10af5915bef8c85420f.scn"
 
 [deps]
 
-source_file="res://assets/Sailboat.blend"
-dest_files=["res://.godot/imported/Sailboat.blend-97763cb9495f71aed06ccadc687a7c2e.scn"]
+source_file="res://assets/blender/Grass.blend"
+dest_files=["res://.godot/imported/Grass.blend-a2f5a8bbd592f10af5915bef8c85420f.scn"]
 
 [params]
 
