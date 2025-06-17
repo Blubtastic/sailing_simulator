@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cafnv34qwaugv"]
+[gd_scene load_steps=6 format=3 uid="uid://cafnv34qwaugv"]
 
 [ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://Player.tscn" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dvkuc6rqfg87k" path="res://Wind.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dxb6dbpv60st0" path="res://TestingLevel.tscn" id="5_3dxm6"]
+[ext_resource type="AudioStream" uid="uid://cb2of8jbt3pgm" path="res://assets/sound/2025-05-12.wav" id="5_fos0i"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="7_lgr22"]
 
 [node name="Root" type="Node3D"]
@@ -23,3 +24,7 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="Sailboat" parent="." instance=ExtResource("7_lgr22")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 45.8761, -0.92659, 10.1911)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fos0i")
+autoplay = true

@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var wind_speed_circle: Node3D = $WindHUD/WindSpeedCircle
 
 const ACCELLERATE_VEC = Vector3(0, 0, -10)
-const ROTATE_ANGLE = 3
+const ROTATE_ANGLE = 1.5
 const MAX_WIND_ANGLE = 35
 var max_speed = 10
 var acceleration = 0.2
@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 		rotation.y -= ROTATE_ANGLE * delta
 	move_and_slide()
 	max_speed = wind_speed_circle.get_speed()
-	print(max_speed)
+	#print(max_speed)
 	
 	var velocity_direction = global_transform.basis.z
 	#var velocity_increase = ACCELLERATE_VEC.rotated(Vector3.UP, rotation.y) * delta * 1

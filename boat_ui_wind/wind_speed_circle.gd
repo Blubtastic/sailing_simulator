@@ -10,7 +10,7 @@ func _physics_process(_delta: float) -> void:
 	if raycast.is_colliding():
 		var hit_position = raycast.get_collision_point()
 		var distance = hit_position.distance_to(global_position)
-		speed = distance if distance > 7 else 0
+		speed = distance if distance > 7.0 else 0.0
 		
 		# Display visuals
 		var arrow_scale = (speed*0.1)*(speed*0.1)
