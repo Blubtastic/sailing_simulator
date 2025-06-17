@@ -17,6 +17,7 @@ material = SubResource("StandardMaterial3D_5jhgy")
 script = ExtResource("2_tt45e")
 
 [node name="SpeedRayCast" type="RayCast3D" parent="." index="0"]
+unique_name_in_owner = true
 target_position = Vector3(0, 0, -20)
 collision_mask = 512
 
@@ -24,9 +25,11 @@ collision_mask = 512
 script = ExtResource("3_5jhgy")
 
 [node name="DrawLine" parent="." index="2" instance=ExtResource("4_5jhgy")]
+unique_name_in_owner = true
 material_override = SubResource("StandardMaterial3D_5jhgy")
 
 [node name="ArrowHead" type="Node3D" parent="." index="3"]
+unique_name_in_owner = true
 
 [node name="Mesh" type="MeshInstance3D" parent="ArrowHead" index="0"]
 transform = Transform3D(-1, -1.50996e-07, 1.32005e-16, 0, -4.37114e-08, -0.02, 1.50996e-07, -1, 8.74228e-10, 0, -0.00172642, 0.455853)

@@ -1,7 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=25 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="2_e80uo"]
 [ext_resource type="PackedScene" uid="uid://dfyl3xkj6qdo1" path="res://boat_ui_wind/wind_speed_circle.tscn" id="2_kne1u"]
+[ext_resource type="Script" uid="uid://dry5yurevj25p" path="res://player/restrain_hinge.gd" id="4_cxr5p"]
+[ext_resource type="Script" uid="uid://cvdcik64c3u3j" path="res://player/constant_wind_force.gd" id="4_e80uo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpjcp"]
 albedo_color = Color(0, 0, 0, 1)
@@ -51,10 +54,43 @@ size = Vector3(2.3, 4.75, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhfnw"]
 size = Vector3(1, 1, 5)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_kne1u"]
+radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kne1u"]
+albedo_color = Color(0.84104, 0.84104, 0.84104, 1)
+roughness = 0.8
+
+[sub_resource type="PrismMesh" id="PrismMesh_kne1u"]
+material = SubResource("StandardMaterial3D_kne1u")
+left_to_right = 0.0
+size = Vector3(11.6, 3.2, 0.01)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e80uo"]
+points = PackedVector3Array(5.69022, -1.49026, 0.031478, -5.69022, 1.64654, 0.031478, -5.10635, 1.50032, 0.031478, -5.83648, -1.63648, 0.031478, 5.83648, -1.63648, 0.031478, -5.83648, 1.64654, 0.031478, 5.47084, -1.41699, 0.031478, 3.35586, -0.833398, 0.031478)
+
+[sub_resource type="PrismMesh" id="PrismMesh_e80uo"]
+material = SubResource("StandardMaterial3D_kne1u")
+left_to_right = 0.0
+size = Vector3(11.1, 5.43, 0.01)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cxr5p"]
+points = PackedVector3Array(5.34104, -2.50601, 0.0367293, -5.42424, 2.75154, 0.0367293, -5.59173, 2.75154, 0.0367293, -5.59173, -2.75673, 0.0367293, 5.59173, -2.75673, 0.0367293, -4.00551, 2.0835, 0.0367293, 3.83802, -1.75493, 0.0367293, 5.50744, -2.58958, 0.0367293, 4.33939, -2.00511, 0.0367293)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxr5p"]
+roughness = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cxr5p"]
+material = SubResource("StandardMaterial3D_cxr5p")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 5.5
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
 
 [node name="BoatMesh" type="Node3D" parent="."]
+visible = false
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="BoatMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0.4)
@@ -91,9 +127,78 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.0
 mesh = SubResource("PrismMesh_3tkgg")
 skeleton = NodePath("../..")
 
+[node name="Sailboat" parent="." instance=ExtResource("2_e80uo")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.20926, -0.727951, 1.59722)
+
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xhfnw")
 
 [node name="WindHUD" type="Node3D" parent="."]
 
 [node name="WindSpeedCircle" parent="WindHUD" instance=ExtResource("2_kne1u")]
+
+[node name="FrontSailAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00148529, 0.871144, -3.28969)
+
+[node name="HingeJoint" type="HingeJoint3D" parent="FrontSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 0.261835, 0.965113, 0, -0.965113, 0.261835, 0, 4.65635, 1.21864)
+node_a = NodePath("../SailStaticPoint")
+node_b = NodePath("../FrontSailAnchor")
+angular_limit/enable = true
+angular_limit/upper = 1.39626
+angular_limit/lower = -1.39626
+script = ExtResource("4_cxr5p")
+
+[node name="SailStaticPoint" type="StaticBody3D" parent="FrontSailAnchor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontSailAnchor/SailStaticPoint"]
+shape = SubResource("SphereShape3D_kne1u")
+
+[node name="FrontSailAnchor" type="RigidBody3D" parent="FrontSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.74794, 2.47507)
+collision_mask = 0
+mass = 10.0
+script = ExtResource("4_e80uo")
+
+[node name="FrontSailMesh" type="MeshInstance3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.11071, -0.926699)
+mesh = SubResource("PrismMesh_kne1u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.11071, -0.926699)
+shape = SubResource("ConvexPolygonShape3D_e80uo")
+
+[node name="MainSailAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 1.38011, 0.113167)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="MainSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.20933, 0)
+node_a = NodePath("../SailStaticPoint")
+node_b = NodePath("../MainSailAnchor")
+angular_limit/enable = true
+angular_limit/upper = 1.39626
+angular_limit/lower = -1.39626
+
+[node name="SailStaticPoint" type="StaticBody3D" parent="MainSailAnchor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainSailAnchor/SailStaticPoint"]
+shape = SubResource("SphereShape3D_kne1u")
+
+[node name="MainSailAnchor" type="RigidBody3D" parent="MainSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52498, 2.52745)
+collision_mask = 0
+mass = 10.0
+script = ExtResource("4_e80uo")
+
+[node name="MainSailMesh" type="MeshInstance3D" parent="MainSailAnchor/MainSailAnchor"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0020752, 1.09743, 0.174762)
+mesh = SubResource("PrismMesh_e80uo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainSailAnchor/MainSailAnchor"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0020752, 1.09743, 0.174762)
+shape = SubResource("ConvexPolygonShape3D_cxr5p")
+
+[node name="BoomMesh" type="MeshInstance3D" parent="MainSailAnchor/MainSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4.57278, 0.122652)
+mesh = SubResource("CylinderMesh_cxr5p")
