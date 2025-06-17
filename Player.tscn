@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=27 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="2_e80uo"]
@@ -52,7 +52,7 @@ left_to_right = 0.0
 size = Vector3(2.3, 4.75, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhfnw"]
-size = Vector3(1, 1, 5)
+size = Vector3(1.8844, 1, 8.33914)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kne1u"]
 radius = 0.05
@@ -77,6 +77,12 @@ size = Vector3(11.1, 5.43, 0.01)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cxr5p"]
 points = PackedVector3Array(5.34104, -2.50601, 0.0367293, -5.42424, 2.75154, 0.0367293, -5.59173, 2.75154, 0.0367293, -5.59173, -2.75673, 0.0367293, 5.59173, -2.75673, 0.0367293, -4.00551, 2.0835, 0.0367293, 3.83802, -1.75493, 0.0367293, 5.50744, -2.58958, 0.0367293, 4.33939, -2.00511, 0.0367293)
 
+[sub_resource type="PrismMesh" id="PrismMesh_tdg3f"]
+material = SubResource("StandardMaterial3D_kne1u")
+left_to_right = 0.0
+subdivide_width = 10
+subdivide_height = 10
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxr5p"]
 roughness = 0.4
 
@@ -85,6 +91,9 @@ material = SubResource("StandardMaterial3D_cxr5p")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 5.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dtqjt"]
+points = PackedVector3Array(0.119279, 2.76687, 0.0518273, -0.116825, -2.76687, -0.0830991, -0.116825, -2.76687, 0.0855531, 0.119279, -2.76687, 0.0518273, 0.0855531, 2.76687, -0.116825, -0.116825, 2.76687, 0.0855531, 0.0855531, -2.76687, -0.116825, -0.116825, 2.76687, -0.0830991, 0.0518273, -2.76687, 0.119279, 0.0518273, 2.76687, 0.119279)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
@@ -131,6 +140,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.20926, -0.727951, 1.59722)
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0338745, 0, 1.11418)
 shape = SubResource("BoxShape3D_xhfnw")
 
 [node name="WindHUD" type="Node3D" parent="."]
@@ -193,12 +203,54 @@ script = ExtResource("4_e80uo")
 
 [node name="MainSailMesh" type="MeshInstance3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0020752, 1.09743, 0.174762)
+visible = false
 mesh = SubResource("PrismMesh_e80uo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0020752, 1.09743, 0.174762)
 shape = SubResource("ConvexPolygonShape3D_cxr5p")
 
-[node name="BoomMesh" type="MeshInstance3D" parent="MainSailAnchor/MainSailAnchor"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4.57278, 0.122652)
+[node name="SoftSail" type="SoftBody3D" parent="MainSailAnchor/MainSailAnchor"]
+transform = Transform3D(7.09163e-07, 0, -0.0797823, 0, 11.0448, 0, 5.40792, 0, 1.04622e-08, -0.00501001, 1.09814, 0.199923)
+mesh = SubResource("PrismMesh_tdg3f")
+collision_layer = 0
+collision_mask = 0
+pinned_points = [265, 287, 1, 277]
+attachments/0/point_index = 265
+attachments/0/spatial_attachment_path = NodePath("../Boom/Boom End")
+attachments/0/offset = Vector3(0.0348815, 0.144022, 0.0340834)
+attachments/1/point_index = 287
+attachments/1/spatial_attachment_path = NodePath("../Boom/BoomStart")
+attachments/1/offset = Vector3(0.0348808, 0.0738416, 0.0621767)
+attachments/2/point_index = 1
+attachments/2/spatial_attachment_path = NodePath("../MastTop")
+attachments/2/offset = Vector3(0.0348808, -0.0574522, 0.150689)
+attachments/3/point_index = 277
+attachments/3/spatial_attachment_path = NodePath("../Boom/BoomMid")
+attachments/3/offset = Vector3(0.0348811, 0.144022, -0.00763468)
+
+[node name="MastTop" type="Node3D" parent="MainSailAnchor/MainSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.67799, -2.65473)
+
+[node name="Boom" type="StaticBody3D" parent="MainSailAnchor/MainSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58981, 0)
+collision_layer = 0
+collision_mask = 0
+
+[node name="BoomMesh" type="MeshInstance3D" parent="MainSailAnchor/MainSailAnchor/Boom"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0219593, 0.122652)
 mesh = SubResource("CylinderMesh_cxr5p")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainSailAnchor/MainSailAnchor/Boom"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0219593, 0.122652)
+shape = SubResource("ConvexPolygonShape3D_dtqjt")
+
+[node name="Boom End" type="Node3D" parent="MainSailAnchor/MainSailAnchor/Boom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0215155, 2.8698)
+
+[node name="BoomMid" type="Node3D" parent="MainSailAnchor/MainSailAnchor/Boom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0215155, -0.0382574)
+
+[node name="BoomStart" type="Node3D" parent="MainSailAnchor/MainSailAnchor/Boom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0916964, -2.56621)
