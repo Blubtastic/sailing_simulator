@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=28 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="2_e80uo"]
@@ -94,6 +94,9 @@ height = 5.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dtqjt"]
 points = PackedVector3Array(0.119279, 2.76687, 0.0518273, -0.116825, -2.76687, -0.0830991, -0.116825, -2.76687, 0.0855531, 0.119279, -2.76687, 0.0518273, 0.0855531, 2.76687, -0.116825, -0.116825, 2.76687, 0.0855531, 0.0855531, -2.76687, -0.116825, -0.116825, 2.76687, -0.0830991, 0.0518273, -2.76687, 0.119279, 0.0518273, 2.76687, 0.119279)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxr5p"]
+size = Vector3(20, 20, 20)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
@@ -213,21 +216,24 @@ shape = SubResource("ConvexPolygonShape3D_cxr5p")
 [node name="SoftSail" type="SoftBody3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(7.09163e-07, 0, -0.0797823, 0, 11.0448, 0, 5.40792, 0, 1.04622e-08, -0.00501001, 1.09814, 0.199923)
 mesh = SubResource("PrismMesh_tdg3f")
-collision_layer = 0
-collision_mask = 0
-pinned_points = [265, 287, 1, 277]
+collision_layer = 256
+collision_mask = 256
+pinned_points = [265, 287, 1, 277, 344]
 attachments/0/point_index = 265
 attachments/0/spatial_attachment_path = NodePath("../Boom/Boom End")
-attachments/0/offset = Vector3(0.0348815, 0.144022, 0.0340834)
+attachments/0/offset = Vector3(0.0348815, 0.144034, 0.0340831)
 attachments/1/point_index = 287
 attachments/1/spatial_attachment_path = NodePath("../Boom/BoomStart")
-attachments/1/offset = Vector3(0.0348808, 0.0738416, 0.0621767)
+attachments/1/offset = Vector3(0.0348808, 0.0738535, 0.0621738)
 attachments/2/point_index = 1
 attachments/2/spatial_attachment_path = NodePath("../MastTop")
-attachments/2/offset = Vector3(0.0348808, -0.0574522, 0.150689)
+attachments/2/offset = Vector3(0.0348808, -0.0574503, 0.150693)
 attachments/3/point_index = 277
 attachments/3/spatial_attachment_path = NodePath("../Boom/BoomMid")
-attachments/3/offset = Vector3(0.0348811, 0.144022, -0.00763468)
+attachments/3/offset = Vector3(0.0348811, 0.144034, -0.00763422)
+attachments/4/point_index = 344
+attachments/4/spatial_attachment_path = NodePath("../Boom/CollisionShape3D")
+attachments/4/offset = Vector3(-0.044901, 1.30634, -0.14359)
 
 [node name="MastTop" type="Node3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.67799, -2.65473)
@@ -254,3 +260,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0215155, -0.0382574)
 
 [node name="BoomStart" type="Node3D" parent="MainSailAnchor/MainSailAnchor/Boom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0916964, -2.56621)
+
+[node name="WindArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.79533, 0)
+collision_layer = 256
+collision_mask = 256
+wind_force_magnitude = 10.0
+wind_source_path = NodePath("WindOrigin")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WindArea"]
+shape = SubResource("BoxShape3D_cxr5p")
+
+[node name="WindOrigin" type="Node3D" parent="WindArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)

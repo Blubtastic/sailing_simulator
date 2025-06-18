@@ -61,6 +61,7 @@ ui_down={
 
 [layer_names]
 
+3d_physics/layer_9="Area3DWind"
 3d_physics/layer_10="WindSpeedCircle"
 
 [rendering]
