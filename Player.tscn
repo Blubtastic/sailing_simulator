@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=29 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="2_e80uo"]
@@ -14,19 +14,14 @@ radius = 0.05
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e80uo"]
 points = PackedVector3Array(5.69022, -1.49026, 0.031478, -5.69022, 1.64654, 0.031478, -5.10635, 1.50032, 0.031478, -5.83648, -1.63648, 0.031478, 5.83648, -1.63648, 0.031478, -5.83648, 1.64654, 0.031478, 5.47084, -1.41699, 0.031478, 3.35586, -0.833398, 0.031478)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cxr5p"]
+height = 11.7138
+radius = 0.11
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kne1u"]
 cull_mode = 2
 albedo_color = Color(0.84104, 0.84104, 0.84104, 1)
 roughness = 0.8
-
-[sub_resource type="PrismMesh" id="PrismMesh_kne1u"]
-material = SubResource("StandardMaterial3D_kne1u")
-left_to_right = 0.0
-size = Vector3(11.6, 3.2, 0.01)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_cxr5p"]
-height = 11.7138
-radius = 0.11
 
 [sub_resource type="PrismMesh" id="PrismMesh_e80uo"]
 material = SubResource("StandardMaterial3D_kne1u")
@@ -126,7 +121,7 @@ mass = 10.0
 script = ExtResource("4_e80uo")
 
 [node name="TopMarker" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91119, 0.79699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91119, 0.692889)
 
 [node name="BottomFrontMarker" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.71493, -2.51513)
@@ -143,6 +138,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.6927, 0.688653)
 mesh = ExtResource("4_dtqjt")
 collision_layer = 256
 collision_mask = 0
+linear_stiffness = 0.3
+damping_coefficient = 0.0
 pinned_points = [33, 1, 48, 93, 49, 3, 91, 87, 85, 83, 81, 79, 77]
 attachments/0/point_index = 33
 attachments/0/spatial_attachment_path = NodePath("../BottomBackMarker")
@@ -184,12 +181,6 @@ attachments/12/point_index = 77
 attachments/12/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D6")
 attachments/12/offset = Vector3(-0.0143643, 0.0036068, 0.000155747)
 
-[node name="FrontSailMesh" type="MeshInstance3D" parent="FrontSailAnchor/FrontSailAnchor"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.11071, -0.926699)
-visible = false
-mesh = SubResource("PrismMesh_kne1u")
-skeleton = NodePath("../..")
-
 [node name="RopeMarkers" type="Node3D" parent="FrontSailAnchor/FrontSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0130518, -0.0932975, -1.26177)
 
@@ -212,7 +203,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 2.65088, 0.75717
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 4.10384, 1.15269)
 
 [node name="Marker3D6" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 5.54697, 1.55026)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 5.54697, 1.52213)
 
 [node name="Mast" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 6.44381, -0.0546494)
