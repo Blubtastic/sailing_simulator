@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://du4hmk4kx7piy"
+uid="uid://o1b4qom338d7"
 path="res://.godot/imported/MainSail.blend-5382d3fef6234bb0fae5089ec42da1a6.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/MainSail.blend-5382d3fef6234bb0fae5089ec42da1
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="SoftBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -33,10 +33,19 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"meshes": {
+"MainSail_Plane": {
+"generate/lightmap_uv": 2,
+"generate/lods": 2,
+"generate/shadow_meshes": 2,
+"lods/normal_merge_angle": 180.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/blender/exports/MainSailPlane2.res"
+}
+},
 "nodes": {
-"PATH:Cube": {
-"generate/physics": true,
-"physics/shape_type": 2
+"PATH:Plane": {
+"mesh_instance/layers": 256
 }
 }
 }
