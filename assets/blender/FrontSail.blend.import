@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://o1b4qom338d7"
-path="res://.godot/imported/MainSail.blend-5382d3fef6234bb0fae5089ec42da1a6.scn"
+uid="uid://cy746w7bbq7d8"
+path="res://.godot/imported/FrontSail.blend-972121b39f106659d18ce0d330d0312f.scn"
 
 [deps]
 
-source_file="res://assets/blender/MainSail.blend"
-dest_files=["res://.godot/imported/MainSail.blend-5382d3fef6234bb0fae5089ec42da1a6.scn"]
+source_file="res://assets/blender/FrontSail.blend"
+dest_files=["res://.godot/imported/FrontSail.blend-972121b39f106659d18ce0d330d0312f.scn"]
 
 [params]
 
-nodes/root_type="SoftBody3D"
+nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -34,18 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"MainSail_Plane": {
+"FrontSail_Cube": {
 "generate/lightmap_uv": 0,
 "generate/lods": 2,
 "generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 180.0,
+"lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://assets/blender/exports/MainSailPlane2.res"
-}
-},
-"nodes": {
-"PATH:Plane": {
-"mesh_instance/layers": 256
+"save_to_file/path": "res://assets/blender/exports/FrontSailPlane.res"
 }
 }
 }

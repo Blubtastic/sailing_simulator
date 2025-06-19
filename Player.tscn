@@ -1,14 +1,18 @@
-[gd_scene load_steps=29 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=30 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="2_e80uo"]
 [ext_resource type="PackedScene" uid="uid://dfyl3xkj6qdo1" path="res://boat_ui_wind/wind_speed_circle.tscn" id="2_kne1u"]
 [ext_resource type="Script" uid="uid://dry5yurevj25p" path="res://player/restrain_hinge.gd" id="4_cxr5p"]
+[ext_resource type="ArrayMesh" uid="uid://ffl3y6ey0nad" path="res://assets/blender/exports/FrontSailPlane.res" id="4_dtqjt"]
 [ext_resource type="Script" uid="uid://cvdcik64c3u3j" path="res://player/constant_wind_force.gd" id="4_e80uo"]
 [ext_resource type="ArrayMesh" uid="uid://mxmadhuggkxj" path="res://assets/blender/exports/MainSailPlane2.res" id="4_tdg3f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kne1u"]
 radius = 0.05
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e80uo"]
+points = PackedVector3Array(5.69022, -1.49026, 0.031478, -5.69022, 1.64654, 0.031478, -5.10635, 1.50032, 0.031478, -5.83648, -1.63648, 0.031478, 5.83648, -1.63648, 0.031478, -5.83648, 1.64654, 0.031478, 5.47084, -1.41699, 0.031478, 3.35586, -0.833398, 0.031478)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kne1u"]
 cull_mode = 2
@@ -19,9 +23,6 @@ roughness = 0.8
 material = SubResource("StandardMaterial3D_kne1u")
 left_to_right = 0.0
 size = Vector3(11.6, 3.2, 0.01)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e80uo"]
-points = PackedVector3Array(5.69022, -1.49026, 0.031478, -5.69022, 1.64654, 0.031478, -5.10635, 1.50032, 0.031478, -5.83648, -1.63648, 0.031478, 5.83648, -1.63648, 0.031478, -5.83648, 1.64654, 0.031478, 5.47084, -1.41699, 0.031478, 3.35586, -0.833398, 0.031478)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cxr5p"]
 height = 11.7138
@@ -124,14 +125,94 @@ collision_mask = 0
 mass = 10.0
 script = ExtResource("4_e80uo")
 
-[node name="FrontSailMesh" type="MeshInstance3D" parent="FrontSailAnchor/FrontSailAnchor"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.11071, -0.926699)
-mesh = SubResource("PrismMesh_kne1u")
-skeleton = NodePath("../..")
+[node name="TopMarker" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.91119, 0.79699)
+
+[node name="BottomFrontMarker" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.71493, -2.51513)
+
+[node name="BottomBackMarker" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.68829, 0.686489)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FrontSailAnchor/FrontSailAnchor"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.11071, -0.926699)
 shape = SubResource("ConvexPolygonShape3D_e80uo")
+
+[node name="FrontSailSoft" type="SoftBody3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.6927, 0.688653)
+mesh = ExtResource("4_dtqjt")
+collision_layer = 256
+collision_mask = 0
+pinned_points = [33, 1, 48, 93, 49, 3, 91, 87, 85, 83, 81, 79, 77]
+attachments/0/point_index = 33
+attachments/0/spatial_attachment_path = NodePath("../BottomBackMarker")
+attachments/0/offset = Vector3(0, -0.00440693, 0.00216419)
+attachments/1/point_index = 1
+attachments/1/spatial_attachment_path = NodePath("../TopMarker")
+attachments/1/offset = Vector3(0, -0.00389099, -0.108337)
+attachments/2/point_index = 48
+attachments/2/spatial_attachment_path = NodePath("../BottomFrontMarker")
+attachments/2/offset = Vector3(0, 0.022233, 0.00378299)
+attachments/3/point_index = 93
+attachments/3/spatial_attachment_path = NodePath("../BottomFrontMarker")
+attachments/3/offset = Vector3(-0.0274158, 0.022233, 0.00378299)
+attachments/4/point_index = 49
+attachments/4/spatial_attachment_path = NodePath("../BottomBackMarker")
+attachments/4/offset = Vector3(-0.0274158, -0.00440693, 0.00216419)
+attachments/5/point_index = 3
+attachments/5/spatial_attachment_path = NodePath("../TopMarker")
+attachments/5/offset = Vector3(-0.0274158, -0.00389099, -0.108337)
+attachments/6/point_index = 91
+attachments/6/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D0")
+attachments/6/offset = Vector3(-0.0143645, -0.0011183, -0.00132275)
+attachments/7/point_index = 87
+attachments/7/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D1")
+attachments/7/offset = Vector3(-0.0143645, -0.000909328, 0.00359464)
+attachments/8/point_index = 85
+attachments/8/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D2")
+attachments/8/offset = Vector3(-0.0143645, 0.00067091, -0.00034833)
+attachments/9/point_index = 83
+attachments/9/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D3")
+attachments/9/offset = Vector3(-0.0143643, 0.00197268, 0.000267506)
+attachments/10/point_index = 81
+attachments/10/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D4")
+attachments/10/offset = Vector3(-0.0143643, -0.000344276, -0.00676668)
+attachments/11/point_index = 79
+attachments/11/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D5")
+attachments/11/offset = Vector3(-0.0143643, -0.0032835, -0.0022766)
+attachments/12/point_index = 77
+attachments/12/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D6")
+attachments/12/offset = Vector3(-0.0143643, 0.0036068, 0.000155747)
+
+[node name="FrontSailMesh" type="MeshInstance3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.11071, -0.926699)
+visible = false
+mesh = SubResource("PrismMesh_kne1u")
+skeleton = NodePath("../..")
+
+[node name="RopeMarkers" type="Node3D" parent="FrontSailAnchor/FrontSailAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0130518, -0.0932975, -1.26177)
+
+[node name="Marker3D0" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, -3.14844, -0.848298)
+
+[node name="Marker3D1" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, -1.69862, -0.453209)
+
+[node name="Marker3D2" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, -0.250182, -0.0492604)
+
+[node name="Marker3D3" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 1.19854, 0.35013)
+
+[node name="Marker3D4" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 2.65088, 0.75717)
+
+[node name="Marker3D5" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 4.10384, 1.15269)
+
+[node name="Marker3D6" type="Marker3D" parent="FrontSailAnchor/FrontSailAnchor/RopeMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 5.54697, 1.55026)
 
 [node name="Mast" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 6.44381, -0.0546494)
@@ -206,55 +287,55 @@ collision_mask = 0
 pinned_points = [28, 30, 32, 34, 36, 38, 42, 44, 29, 27, 22, 16, 11, 7, 4, 2, 0]
 attachments/0/point_index = 28
 attachments/0/spatial_attachment_path = NodePath("../Boom/Marker3D0")
-attachments/0/offset = Vector3(-0.0367379, 0.113345, -0.0373861)
+attachments/0/offset = Vector3(-0.005703, 0.113345, -0.0373861)
 attachments/1/point_index = 30
 attachments/1/spatial_attachment_path = NodePath("../Boom/Marker3D1")
-attachments/1/offset = Vector3(-0.036738, 0.113345, 0.0363951)
+attachments/1/offset = Vector3(-0.00570306, 0.113345, 0.0363951)
 attachments/2/point_index = 32
 attachments/2/spatial_attachment_path = NodePath("../Boom/Marker3D2")
-attachments/2/offset = Vector3(-0.0367381, 0.113345, 0.0262625)
+attachments/2/offset = Vector3(-0.00570312, 0.113345, 0.0262625)
 attachments/3/point_index = 34
 attachments/3/spatial_attachment_path = NodePath("../Boom/Marker3D3")
-attachments/3/offset = Vector3(-0.0367381, 0.113345, 0.0187757)
+attachments/3/offset = Vector3(-0.00570318, 0.113345, 0.0187757)
 attachments/4/point_index = 36
 attachments/4/spatial_attachment_path = NodePath("../Boom/Marker3D4")
-attachments/4/offset = Vector3(-0.0367382, 0.113345, -0.0442781)
+attachments/4/offset = Vector3(-0.00570324, 0.113345, -0.0442781)
 attachments/5/point_index = 38
 attachments/5/spatial_attachment_path = NodePath("../Boom/Marker3D5")
-attachments/5/offset = Vector3(-0.0367382, 0.113345, -0.012074)
+attachments/5/offset = Vector3(-0.0057033, 0.113345, -0.012074)
 attachments/6/point_index = 42
 attachments/6/spatial_attachment_path = NodePath("../Boom/Marker3D6")
-attachments/6/offset = Vector3(-0.0367383, 0.113345, -0.0248528)
+attachments/6/offset = Vector3(-0.00570336, 0.113345, -0.0248528)
 attachments/7/point_index = 44
 attachments/7/spatial_attachment_path = NodePath("../Boom/Marker3D7")
-attachments/7/offset = Vector3(-0.0367396, 0.113345, 0.0443144)
+attachments/7/offset = Vector3(-0.00570383, 0.113345, 0.0443144)
 attachments/8/point_index = 29
 attachments/8/spatial_attachment_path = NodePath("../../../Mast/Marker3D0")
-attachments/8/offset = Vector3(-0.0367379, -0.0151849, 0.0733314)
+attachments/8/offset = Vector3(-0.00570294, -0.0151849, 0.0733314)
 attachments/9/point_index = 27
 attachments/9/spatial_attachment_path = NodePath("../../../Mast/Marker3D1")
-attachments/9/offset = Vector3(-0.0367379, -0.00621283, 0.0733314)
+attachments/9/offset = Vector3(-0.00570294, -0.00621283, 0.0733314)
 attachments/10/point_index = 22
 attachments/10/spatial_attachment_path = NodePath("../../../Mast/Marker3D2")
-attachments/10/offset = Vector3(-0.0367379, -0.00606275, 0.0733314)
+attachments/10/offset = Vector3(-0.00570294, -0.00606275, 0.0733314)
 attachments/11/point_index = 16
 attachments/11/spatial_attachment_path = NodePath("../../../Mast/Marker3D3")
-attachments/11/offset = Vector3(-0.0367379, 0.00681591, 0.0733314)
+attachments/11/offset = Vector3(-0.00570294, 0.00681591, 0.0733314)
 attachments/12/point_index = 11
 attachments/12/spatial_attachment_path = NodePath("../../../Mast/Marker3D4")
-attachments/12/offset = Vector3(-0.0367379, 0.00696707, 0.0733314)
+attachments/12/offset = Vector3(-0.00570294, 0.00696707, 0.0733314)
 attachments/13/point_index = 7
 attachments/13/spatial_attachment_path = NodePath("../../../Mast/Marker3D5")
-attachments/13/offset = Vector3(-0.0367379, 0.00714445, 0.0733314)
+attachments/13/offset = Vector3(-0.00570294, 0.00714445, 0.0733314)
 attachments/14/point_index = 4
 attachments/14/spatial_attachment_path = NodePath("../../../Mast/Marker3D6")
-attachments/14/offset = Vector3(-0.0367379, 0.00281811, 0.0733314)
+attachments/14/offset = Vector3(-0.00570294, 0.00281811, 0.0733314)
 attachments/15/point_index = 2
 attachments/15/spatial_attachment_path = NodePath("../../../Mast/Marker3D7")
-attachments/15/offset = Vector3(-0.0367379, 0.0120049, 0.0733314)
+attachments/15/offset = Vector3(-0.00570294, 0.0120049, 0.0733314)
 attachments/16/point_index = 0
 attachments/16/spatial_attachment_path = NodePath("../../../Mast/Marker3D8")
-attachments/16/offset = Vector3(-0.0367379, -0.0185738, 0.0733314)
+attachments/16/offset = Vector3(-0.00570294, -0.0185738, 0.0733314)
 
 [node name="Boom" type="StaticBody3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58981, 0)
