@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=27 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="2_e80uo"]
@@ -17,16 +17,6 @@ points = PackedVector3Array(5.69022, -1.49026, 0.031478, -5.69022, 1.64654, 0.03
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cxr5p"]
 height = 11.7138
 radius = 0.11
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kne1u"]
-cull_mode = 2
-albedo_color = Color(0.84104, 0.84104, 0.84104, 1)
-roughness = 0.8
-
-[sub_resource type="PrismMesh" id="PrismMesh_e80uo"]
-material = SubResource("StandardMaterial3D_kne1u")
-left_to_right = 0.0
-size = Vector3(11.1, 5.43, 0.01)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cxr5p"]
 points = PackedVector3Array(5.34104, -2.50601, 0.0367293, -5.42424, 2.75154, 0.0367293, -5.59173, 2.75154, 0.0367293, -5.59173, -2.75673, 0.0367293, 5.59173, -2.75673, 0.0367293, -4.00551, 2.0835, 0.0367293, 3.83802, -1.75493, 0.0367293, 5.50744, -2.58958, 0.0367293, 4.33939, -2.00511, 0.0367293)
@@ -139,7 +129,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.6927, 0.688653)
 mesh = ExtResource("4_dtqjt")
 collision_layer = 256
 collision_mask = 0
-simulation_precision = 15
+simulation_precision = 20
+linear_stiffness = 0.3
 pinned_points = [33, 1, 48, 93, 49, 3, 91, 87, 85, 83, 81, 79, 77]
 attachments/0/point_index = 33
 attachments/0/spatial_attachment_path = NodePath("../BottomBackMarker")
@@ -263,11 +254,6 @@ collision_mask = 0
 mass = 10.0
 script = ExtResource("4_e80uo")
 
-[node name="MainSailMesh" type="MeshInstance3D" parent="MainSailAnchor/MainSailAnchor"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0020752, 1.09743, 0.174762)
-visible = false
-mesh = SubResource("PrismMesh_e80uo")
-
 [node name="SailHitbox" type="CollisionShape3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0020752, 1.09743, 0.174762)
 shape = SubResource("ConvexPolygonShape3D_cxr5p")
@@ -277,7 +263,8 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0063
 mesh = ExtResource("4_tdg3f")
 collision_layer = 256
 collision_mask = 0
-simulation_precision = 15
+simulation_precision = 20
+linear_stiffness = 0.2
 pinned_points = [28, 30, 32, 34, 36, 38, 42, 44, 29, 27, 22, 16, 11, 7, 4, 2, 0]
 attachments/0/point_index = 28
 attachments/0/spatial_attachment_path = NodePath("../Boom/Marker3D0")
