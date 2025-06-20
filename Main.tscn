@@ -13,7 +13,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6853, -0.20108, -51.4709)
 
 [node name="IsometricCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612372, 0, 40, 20)
-visible = false
 projection = 1
 size = 75.0
 far = 150.0
