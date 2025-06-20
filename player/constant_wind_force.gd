@@ -8,5 +8,3 @@ func _physics_process(_delta):
 	# Apply wind force to the sail
 	var force = wind_direction.normalized() * wind_strength
 	apply_force(force, Vector3.ZERO)  # Apply force at the center of mass
-
-# TODO: Read SoftBody3D documentation. It has built-in support for wind-force!
