@@ -170,7 +170,7 @@ vec3 water(vec2 uv, vec3 cdir, float iTime)
     	sin(d1) * 0.15 + sin(d2) * 0.05,
     	cos(d1) * 0.15 + cos(d2) * 0.05
     );
-	float xSpeed = TIME * wave_movement;
+	float xSpeed = TIME * wave_movement * 0.5;
     vec3 ret = mix(WATER_COL.rgb, WATER2_COL.rgb, waterlayer(uv + dist.xy + xSpeed));
     ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx - xSpeed));
     return ret;
@@ -191,9 +191,7 @@ void vertex(){
 	VERTEX.y += dist.y * height;
 }
 
-void fragment()
-{
+void fragment() {
 	vec2 uv = UV;
-
 	ALBEDO = vec3(water(uv * tile, vec3(0,1,0), TIME * distortion_speed));
 }

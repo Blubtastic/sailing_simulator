@@ -9,7 +9,7 @@
 [node name="WorldLighting" parent="." instance=ExtResource("3_wiie4")]
 
 [node name="Ocean" parent="." instance=ExtResource("1_3oome")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.18, -0.5, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 94.18, -0.5, 0)
 
 [node name="GroundGridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.542, 0, -71.642)

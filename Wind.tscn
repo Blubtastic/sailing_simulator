@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvkuc6rqfg87k"]
 
-[ext_resource type="Script" uid="uid://bxf2tvx1a2vn7" path="res://wind_align_direction.gd" id="1_mq10k"]
+[ext_resource type="PackedScene" uid="uid://ctv6n5j12q74a" path="res://AlignParentToWind.tscn" id="1_mq10k"]
 
 [sub_resource type="Curve" id="Curve_68pvr"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.135802, 0.314607), 0.0, 0.0, 0, 0, Vector2(0.753087, 0.359551), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -46,7 +46,6 @@ radial_segments = 4
 rings = 4
 
 [node name="WindParticles" type="Node3D"]
-script = ExtResource("1_mq10k")
 
 [node name="Wind" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -65)
@@ -56,3 +55,5 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_68pvr")
 draw_pass_1 = SubResource("CapsuleMesh_mq10k")
+
+[node name="AlignDirection" parent="." instance=ExtResource("1_mq10k")]

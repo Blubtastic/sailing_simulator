@@ -12,7 +12,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# Direction of wind
 	var radians = deg_to_rad(Globals.wind_direction)
-	var wind_direction = Vector3(cos(radians), 0, sin(radians)).normalized()
+	var wind_direction = Vector3(sin(radians), 0, cos(radians)).normalized()
 	
 	# Angle between boat and wind
 	# Dot product is number where -1 is against wind and 1 is with wind.
