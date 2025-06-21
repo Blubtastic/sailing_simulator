@@ -3,7 +3,7 @@ extends Node3D
 const SAIL_ANGLE_CURVE = preload("res://player/sail_angle_curve.tres")
 
 @export var hinge_joint: HingeJoint3D
-@export var MIN: int = 79
+@export var MIN: int = 0
 @export var MAX: int = 80
 
 func _physics_process(_delta: float) -> void:

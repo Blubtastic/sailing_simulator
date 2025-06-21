@@ -365,23 +365,24 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0219593, 0.122652)
 shape = SubResource("ConvexPolygonShape3D_dtqjt")
 
-[node name="WindOrigin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-
-[node name="AlignParentToWind" parent="WindOrigin" instance=ExtResource("6_06mnu")]
-
-[node name="WindOriginArrow" type="MeshInstance3D" parent="WindOrigin"]
-transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1.33179e-06, 0.215441, -7.65525)
-mesh = SubResource("CylinderMesh_mhpjh")
-
 [node name="WindForSoftBody" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 collision_layer = 256
 collision_mask = 256
 wind_force_magnitude = 10.0
-wind_source_path = NodePath("../WindOrigin")
+wind_source_path = NodePath("WindOrigin")
 
-[node name="Area" type="CollisionShape3D" parent="WindForSoftBody"]
+[node name="WindOrigin" type="Node3D" parent="WindForSoftBody"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="AlignParentToWind" parent="WindForSoftBody/WindOrigin" instance=ExtResource("6_06mnu")]
+
+[node name="WindOriginArrow" type="MeshInstance3D" parent="WindForSoftBody/WindOrigin"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1.33179e-06, 0.215441, -7.65525)
+visible = false
+mesh = SubResource("CylinderMesh_mhpjh")
+
+[node name="Hitbox" type="CollisionShape3D" parent="WindForSoftBody"]
 shape = SubResource("CylinderShape3D_06mnu")
 
 [node name="Sailboat" parent="." instance=ExtResource("6_b32pr")]
