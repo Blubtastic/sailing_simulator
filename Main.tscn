@@ -9,7 +9,7 @@
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_lgr22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6853, -0.20108, -51.4709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6853, 0.0478898, -51.4709)
 
 [node name="IsometricCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, 0.353553, -0.612373, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612373, 0.0256233, 40.0318, 19.9299)
