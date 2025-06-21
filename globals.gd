@@ -1,3 +1,3 @@
 extends Node3D
 
-var wind_direction = 0
+var wind_direction = 90

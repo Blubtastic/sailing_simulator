@@ -3,7 +3,7 @@ extends Node3D
 const SAIL_ANGLE_CURVE = preload("res://player/sail_angle_curve.tres")
 
 @export var hinge_joint: HingeJoint3D
-@export var MIN: int = 0
+@export var MIN: int = 79
 @export var MAX: int = 80
 
 func _physics_process(_delta: float) -> void:
@@ -24,7 +24,6 @@ func _physics_process(_delta: float) -> void:
 	# Ratio to angle, degs to rads
 	var joint_angle = ((MAX - MIN) * sail_ratio)
 	var joint_radians = deg_to_rad(joint_angle)
-	#print(35.0/180.0)
 	
 	# Set joint limits
 	hinge_joint.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, joint_radians)

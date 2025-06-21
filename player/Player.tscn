@@ -34,17 +34,16 @@ height = 5.5
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dtqjt"]
 points = PackedVector3Array(0.119279, 2.76687, 0.0518273, -0.116825, -2.76687, -0.0830991, -0.116825, -2.76687, 0.0855531, 0.119279, -2.76687, 0.0518273, 0.0855531, 2.76687, -0.116825, -0.116825, 2.76687, 0.0855531, 0.0855531, -2.76687, -0.116825, -0.116825, 2.76687, -0.0830991, 0.0518273, -2.76687, 0.119279, 0.0518273, 2.76687, 0.119279)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06mnu"]
-albedo_color = Color(0.0748453, 0.0748453, 0.0748453, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhpjh"]
+emission_energy_multiplier = 5.4
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_06mnu"]
-material = SubResource("StandardMaterial3D_06mnu")
-bottom_radius = 0.0
-height = 10.0
+[sub_resource type="CylinderMesh" id="CylinderMesh_mhpjh"]
+material = SubResource("StandardMaterial3D_mhpjh")
+top_radius = 0.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_06mnu"]
 height = 20.0
-radius = 15.0
+radius = 10.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhfnw"]
 size = Vector3(1.8844, 1, 8.33914)
@@ -144,13 +143,13 @@ linear_stiffness = 0.3
 pinned_points = [33, 1, 48, 93, 49, 3, 91, 87, 85, 83, 81, 79, 77]
 attachments/0/point_index = 33
 attachments/0/spatial_attachment_path = NodePath("../BottomBackMarker")
-attachments/0/offset = Vector3(0.0243754, -0.00440979, 0.00216401)
+attachments/0/offset = Vector3(0, -0.00440979, 0.00216401)
 attachments/1/point_index = 1
 attachments/1/spatial_attachment_path = NodePath("../TopMarker")
-attachments/1/offset = Vector3(0.0243754, -0.00388908, -0.00423598)
+attachments/1/offset = Vector3(0, -0.00388908, -0.00423598)
 attachments/2/point_index = 48
 attachments/2/spatial_attachment_path = NodePath("../BottomFrontMarker")
-attachments/2/offset = Vector3(0.0243754, 0.0222301, 0.00378299)
+attachments/2/offset = Vector3(0, 0.0222301, 0.00378299)
 attachments/3/point_index = 93
 attachments/3/spatial_attachment_path = NodePath("../BottomFrontMarker")
 attachments/3/offset = Vector3(-0.0274158, 0.0222301, 0.00378299)
@@ -366,24 +365,23 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0219593, 0.122652)
 shape = SubResource("ConvexPolygonShape3D_dtqjt")
 
-[node name="SoftBodyWind" type="Area3D" parent="."]
+[node name="WindOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="AlignParentToWind" parent="WindOrigin" instance=ExtResource("6_06mnu")]
+
+[node name="WindOriginArrow" type="MeshInstance3D" parent="WindOrigin"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1.33179e-06, 0.215441, -7.65525)
+mesh = SubResource("CylinderMesh_mhpjh")
+
+[node name="WindForSoftBody" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 collision_layer = 256
 collision_mask = 256
 wind_force_magnitude = 10.0
-wind_source_path = NodePath("WindOrigin")
+wind_source_path = NodePath("../WindOrigin")
 
-[node name="WindAlignParent" parent="SoftBodyWind" instance=ExtResource("6_06mnu")]
-
-[node name="DirectionArrow" type="MeshInstance3D" parent="SoftBodyWind"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6.79686, 0)
-visible = false
-mesh = SubResource("CylinderMesh_06mnu")
-
-[node name="WindOrigin" type="Node3D" parent="SoftBodyWind"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10)
-
-[node name="WindCollisionShape" type="CollisionShape3D" parent="SoftBodyWind"]
+[node name="Area" type="CollisionShape3D" parent="WindForSoftBody"]
 shape = SubResource("CylinderShape3D_06mnu")
 
 [node name="Sailboat" parent="." instance=ExtResource("6_b32pr")]

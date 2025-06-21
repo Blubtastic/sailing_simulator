@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var wind_speed_circle: Node3D = $WindHUD/WindSpeedCircle
 
