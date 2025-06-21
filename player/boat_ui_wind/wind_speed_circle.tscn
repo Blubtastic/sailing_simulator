@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfyl3xkj6qdo1"]
 
 [ext_resource type="PackedScene" uid="uid://c7u1gt30hay88" path="res://assets/blender/WindSpeedCircle.blend" id="1_8e47e"]
-[ext_resource type="Script" uid="uid://b6nigney6ibiy" path="res://boat_ui_wind/wind_speed_circle.gd" id="2_tt45e"]
-[ext_resource type="Script" uid="uid://bdjmdpqg5a5gt" path="res://boat_ui_wind/plane_001.gd" id="3_5jhgy"]
+[ext_resource type="Script" uid="uid://b6nigney6ibiy" path="res://player/boat_ui_wind/wind_speed_circle.gd" id="2_tt45e"]
+[ext_resource type="Script" uid="uid://bdjmdpqg5a5gt" path="res://player/boat_ui_wind/sync_rotation_to_wind.gd" id="3_5jhgy"]
 [ext_resource type="PackedScene" uid="uid://qdc8nnf556a0" path="res://draw_line/draw_line.tscn" id="4_5jhgy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jhgy"]

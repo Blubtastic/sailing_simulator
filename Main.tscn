@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cafnv34qwaugv"]
 
-[ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://Player.tscn" id="1_lgr22"]
+[ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dvkuc6rqfg87k" path="res://Wind.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dxb6dbpv60st0" path="res://TestingLevel.tscn" id="5_3dxm6"]
 [ext_resource type="AudioStream" uid="uid://cb2of8jbt3pgm" path="res://assets/sound/2025-05-12.wav" id="5_fos0i"]
