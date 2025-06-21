@@ -12,13 +12,13 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6853, -0.20108, -51.4709)
 
 [node name="IsometricCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612372, 0, 40, 20)
+transform = Transform3D(0.707107, 0.353553, -0.612373, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612373, 0.0256233, 40.0318, 19.9299)
 projection = 1
 size = 75.0
 far = 150.0
 
 [node name="WindParticles" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 68.9386, 9.31548, 28.3901)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 40.5123, 9.31548, -25.0543)
 
 [node name="TestingLevel" parent="." instance=ExtResource("5_3dxm6")]
 

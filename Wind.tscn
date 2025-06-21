@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvkuc6rqfg87k"]
+[gd_scene load_steps=9 format=3 uid="uid://dvkuc6rqfg87k"]
+
+[ext_resource type="Script" uid="uid://bxf2tvx1a2vn7" path="res://wind_align_direction.gd" id="1_mq10k"]
 
 [sub_resource type="Curve" id="Curve_68pvr"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.135802, 0.314607), 0.0, 0.0, 0, 0, Vector2(0.753087, 0.359551), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -17,9 +19,10 @@ curve_z = SubResource("Curve_15g4v")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_68pvr"]
 particle_flag_align_y = true
-emission_shape_scale = Vector3(30.76, 1, 80)
+emission_shape_scale = Vector3(100, 1, 20)
 emission_shape = 3
 emission_box_extents = Vector3(1, 0.1, 1)
+direction = Vector3(0, 0, 1)
 spread = 0.0
 initial_velocity_min = 30.0
 initial_velocity_max = 30.0
@@ -43,9 +46,11 @@ radial_segments = 4
 rings = 4
 
 [node name="WindParticles" type="Node3D"]
+script = ExtResource("1_mq10k")
 
 [node name="Wind" type="GPUParticles3D" parent="."]
-amount = 64
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -65)
+amount = 82
 lifetime = 6.0
 fixed_fps = 60
 local_coords = true
