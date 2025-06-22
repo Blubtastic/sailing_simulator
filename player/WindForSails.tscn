@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://6lthhj5fhopk"]
+
+[ext_resource type="PackedScene" uid="uid://ctv6n5j12q74a" path="res://AlignParentToWind.tscn" id="1_6y67x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhpjh"]
+emission_energy_multiplier = 5.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mhpjh"]
+material = SubResource("StandardMaterial3D_mhpjh")
+top_radius = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_06mnu"]
+height = 20.0
+radius = 10.0
+
+[node name="WindForSails" type="Area3D"]
+collision_layer = 256
+collision_mask = 256
+wind_force_magnitude = 10.0
+wind_source_path = NodePath("WindOrigin")
+
+[node name="WindOrigin" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="WindOriginArrow" type="MeshInstance3D" parent="WindOrigin"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, -1.33179e-06, 0.215441, -7.65525)
+visible = false
+mesh = SubResource("CylinderMesh_mhpjh")
+
+[node name="AlignParentToWind" parent="WindOrigin" instance=ExtResource("1_6y67x")]
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_06mnu")
