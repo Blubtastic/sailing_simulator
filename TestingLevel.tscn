@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxb6dbpv60st0"]
+[gd_scene load_steps=5 format=3 uid="uid://dxb6dbpv60st0"]
 
 [ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://Ocean.tscn" id="1_3oome"]
 [ext_resource type="MeshLibrary" uid="uid://ju1ns6avwj1d" path="res://GroundPieces.tres" id="2_wiie4"]
 [ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://WorldLighting.tscn" id="3_wiie4"]
+[ext_resource type="PackedScene" uid="uid://c5po3if78ju8v" path="res://assets/Flag.tscn" id="4_nbul3"]
 
 [node name="TestingLevel" type="Node3D"]
 
@@ -35,3 +36,6 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -2, 0)
 metadata/_edit_group_ = true
+
+[node name="Flag" parent="." instance=ExtResource("4_nbul3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.2143, 12.4872, -8.31182)
