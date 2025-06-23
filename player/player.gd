@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @onready var wind_speed_circle: Node3D = $WindHUD/WindSpeedCircle
+const HEEL_CURVE = preload("res://player/heel_curve.tres")
 
 const ROTATE_FORCE = 1.5
 const ROTATE_MAX_SPEED = 0.4
@@ -28,3 +29,20 @@ func _physics_process(delta: float) -> void:
 	speed = lerpf(velocity.length(), wind_speed, SPEED_FORCE*delta)
 	velocity = velocity_direction * speed
 	move_and_slide()
+	apply_heel(delta)
+
+# Rotate player along local x-axis based on direction towards wind
+func apply_heel(delta: float):
+	var boat_direction = -global_basis.z
+	var radians = deg_to_rad(Globals.wind_direction)
+	var wind_direction = Vector3(sin(radians), 0, cos(radians)).normalized()
+	
+	var direction_dot_product = boat_direction.dot(wind_direction)
+	# TODO: rotate boat left/right depending on angle to wind
+	# Direction should be -1 if angle to wind < 0 and 1 if > 0. 
+	var direction = 1 if direction_dot_product > 0 else -1
+	var sample_ratio = (direction_dot_product + 1) / 2 # 0-1
+	var heel_ratio = clamp(HEEL_CURVE.sample(sample_ratio), 0, 1)
+	var rads = 0.5*PI*heel_ratio
+	rotation.z = lerpf(rotation.z, rads*direction, 5*delta)
+	print(direction)
