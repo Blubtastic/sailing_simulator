@@ -38,4 +38,4 @@ metadata/_editor_floor_ = Vector3(0, -2, 0)
 metadata/_edit_group_ = true
 
 [node name="Flag" parent="." instance=ExtResource("4_nbul3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.2143, 12.4872, -8.31182)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 54.9104, 13.3115, -8.98664)
