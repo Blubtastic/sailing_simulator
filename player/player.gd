@@ -31,21 +31,21 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	apply_heel(delta)
 
-# Rotate player along local x-axis based on direction towards wind
+# Rotate player along local x-axis based on boat and wind direction
 func apply_heel(delta: float):
 	# Get movement vectors
-	var boat_direction = -global_basis.z
+	var forward = -global_basis.z
 	var radians = deg_to_rad(Globals.wind_direction)
 	var wind_direction = Vector3(sin(radians), 0, cos(radians)).normalized()
 	
 	# Get which side wind is coming from by using cross product.
-	var cross_boat_wind = boat_direction.cross(wind_direction)
+	var cross_boat_wind = forward.cross(wind_direction)
 	var direction = cross_boat_wind.y
 	
 	# Get angle by using dot product.
-	var direction_dot_product = boat_direction.dot(wind_direction)	
+	var direction_dot_product = forward.dot(wind_direction)	
 	var sample_ratio = (direction_dot_product + 1) / 2 # 0-1
-	var heel_ratio = clamp(HEEL_CURVE.sample(sample_ratio), 0, 1)
+	var heel_ratio = HEEL_CURVE.sample(sample_ratio)
 	var rads = 0.5*PI*heel_ratio
 	
 	# Set heel amount
