@@ -1,3 +1,5 @@
+![alt text](assets/readme_img.png)
+
 # Tittel
 
 **Elida**
