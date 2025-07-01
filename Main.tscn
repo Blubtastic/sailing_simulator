@@ -12,11 +12,12 @@ frequency = 0.0345
 fractal_gain = -0.02
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fos0i"]
+seamless_blend_skirt = 0.0
 noise = SubResource("FastNoiseLite_nbul3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6jne"]
 transparency = 4
-albedo_color = Color(0.972549, 0.972549, 0.972549, 0.129412)
+albedo_color = Color(0.972549, 0.972549, 0.972549, 0.105882)
 albedo_texture = SubResource("NoiseTexture2D_fos0i")
 albedo_texture_msdf = true
 
@@ -49,6 +50,6 @@ stream = ExtResource("5_fos0i")
 autoplay = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 130, 40, 43)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 130, 30, 43)
 cast_shadow = 3
 mesh = SubResource("PlaneMesh_3dxm6")
