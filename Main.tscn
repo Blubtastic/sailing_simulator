@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cafnv34qwaugv"]
+[gd_scene load_steps=11 format=3 uid="uid://cafnv34qwaugv"]
 
 [ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dvkuc6rqfg87k" path="res://Wind.tscn" id="4_cm0pq"]
@@ -6,20 +6,29 @@
 [ext_resource type="AudioStream" uid="uid://cb2of8jbt3pgm" path="res://assets/sound/2025-05-12.wav" id="5_fos0i"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="7_lgr22"]
 
+[sub_resource type="Gradient" id="Gradient_fos0i"]
+colors = PackedColorArray(0, 0, 0, 1, 0.466181, 0.466181, 0.466181, 1)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nbul3"]
-noise_type = 0
-frequency = 0.0345
-fractal_gain = -0.02
+noise_type = 4
+seed = 4
+frequency = 0.006
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fos0i"]
+width = 2048
+height = 2048
+invert = true
 seamless_blend_skirt = 0.0
+color_ramp = SubResource("Gradient_fos0i")
 noise = SubResource("FastNoiseLite_nbul3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6jne"]
 transparency = 4
+shading_mode = 0
 albedo_color = Color(0.972549, 0.972549, 0.972549, 0.105882)
 albedo_texture = SubResource("NoiseTexture2D_fos0i")
 albedo_texture_msdf = true
+disable_receive_shadows = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3dxm6"]
 material = SubResource("StandardMaterial3D_b6jne")
@@ -49,7 +58,8 @@ visible = false
 stream = ExtResource("5_fos0i")
 autoplay = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="ShadowMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 130, 30, 43)
 cast_shadow = 3
+lod_bias = 0.001
 mesh = SubResource("PlaneMesh_3dxm6")
