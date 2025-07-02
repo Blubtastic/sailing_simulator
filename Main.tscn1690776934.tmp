@@ -8,14 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="7_lgr22"]
 
 [sub_resource type="Gradient" id="Gradient_fos0i"]
-colors = PackedColorArray(0, 0, 0, 1, 0.359069, 0.359069, 0.359069, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.466181, 0.466181, 0.466181, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_nbul3"]
-frequency = 0.0148
-fractal_type = 0
-fractal_octaves = 2
+noise_type = 4
+seed = 4
+frequency = 0.006
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fos0i"]
+width = 2048
+height = 2048
 invert = true
 seamless_blend_skirt = 0.0
 color_ramp = SubResource("Gradient_fos0i")
@@ -24,7 +26,7 @@ noise = SubResource("FastNoiseLite_nbul3")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6jne"]
 transparency = 4
 shading_mode = 0
-albedo_color = Color(0.972549, 0.972549, 0.972549, 0.109804)
+albedo_color = Color(0.972549, 0.972549, 0.972549, 0.105882)
 albedo_texture = SubResource("NoiseTexture2D_fos0i")
 albedo_texture_msdf = true
 disable_receive_shadows = true
@@ -63,4 +65,3 @@ cast_shadow = 3
 lod_bias = 0.001
 mesh = SubResource("PlaneMesh_3dxm6")
 script = ExtResource("6_3dxm6")
-noise = SubResource("FastNoiseLite_nbul3")
