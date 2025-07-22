@@ -23,3 +23,10 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_fos0i")
 autoplay = true
+
+[node name="IsometricCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0.353553, -0.612373, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612373, -40, 35, 40)
+visible = false
+projection = 1
+size = 75.0
+far = 300.0
