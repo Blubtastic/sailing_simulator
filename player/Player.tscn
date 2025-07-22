@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=28 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player/player.gd" id="1_gskgj"]
 [ext_resource type="Script" uid="uid://dry5yurevj25p" path="res://player/restrain_hinge.gd" id="2_06mnu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6lthhj5fhopk" path="res://player/wind_zone/WindForSails.tscn" id="6_06mnu"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="6_b32pr"]
 [ext_resource type="PackedScene" uid="uid://dfyl3xkj6qdo1" path="res://player/boat_ui_wind/wind_speed_circle.tscn" id="7_hbkom"]
+[ext_resource type="Script" uid="uid://b4f7ouytacisk" path="res://player/lock_camera_rotation.gd" id="9_mhpjh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kne1u"]
 radius = 0.05
@@ -409,3 +410,12 @@ mesh = SubResource("PrismMesh_3tkgg")
 skeleton = NodePath("../..")
 
 [node name="WindForSails" parent="." instance=ExtResource("6_06mnu")]
+
+[node name="CameraPivot" type="Node3D" parent="."]
+script = ExtResource("9_mhpjh")
+
+[node name="IsometricCamera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(0.707107, 0.353553, -0.612373, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612373, -20, 30, 20)
+projection = 1
+size = 75.0
+far = 150.0
