@@ -49,4 +49,6 @@ func apply_heel(delta: float):
 	var rads = 0.5*PI*heel_ratio
 	
 	# Set heel amount
-	rotation.z = lerpf(rotation.z, rads*direction, 1*delta)
+	var heel_angle = rads*direction
+	var final_heel_angle = heel_angle*speed/8 # 
+	rotation.z = lerpf(rotation.z, final_heel_angle, 1*delta)
