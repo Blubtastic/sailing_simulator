@@ -416,7 +416,7 @@ skeleton = NodePath("../..")
 script = ExtResource("9_mhpjh")
 
 [node name="IsometricCamera" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(0.707107, 0.353553, -0.612373, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612373, -120, 100, 120)
+transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, -120, 78.464, 120)
 projection = 1
 current = true
 size = 100.0
