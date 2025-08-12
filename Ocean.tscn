@@ -10,7 +10,7 @@ shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
 shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 shader_parameter/distortion_speed = 1.5
-shader_parameter/tile = Vector2(30, 30)
+shader_parameter/tile = Vector2(60, 60)
 shader_parameter/height = 2.0
 shader_parameter/wave_size = Vector2(2, 2)
 shader_parameter/wave_speed = 1.5
@@ -18,7 +18,7 @@ shader_parameter/wave_movement = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1nxu7"]
 material = SubResource("ShaderMaterial_o8cs1")
-size = Vector2(300, 300)
+size = Vector2(600, 600)
 
 [node name="Ocean" type="Node3D"]
 

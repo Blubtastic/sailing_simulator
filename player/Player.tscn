@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=29 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player/player.gd" id="1_gskgj"]
 [ext_resource type="Script" uid="uid://dry5yurevj25p" path="res://player/restrain_hinge.gd" id="2_06mnu"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="6_b32pr"]
 [ext_resource type="PackedScene" uid="uid://dfyl3xkj6qdo1" path="res://player/boat_ui_wind/wind_speed_circle.tscn" id="7_hbkom"]
 [ext_resource type="Script" uid="uid://b4f7ouytacisk" path="res://player/lock_camera_rotation.gd" id="9_mhpjh"]
+[ext_resource type="PackedScene" uid="uid://dvkuc6rqfg87k" path="res://Wind.tscn" id="10_ndjxb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kne1u"]
 radius = 0.05
@@ -418,5 +419,7 @@ script = ExtResource("9_mhpjh")
 transform = Transform3D(0.707107, 0.353553, -0.612373, 0, 0.866026, 0.499999, 0.707107, -0.353553, 0.612373, -120, 100, 120)
 projection = 1
 current = true
-size = 75.0
-far = 300.0
+size = 100.0
+
+[node name="WindParticles" parent="." instance=ExtResource("10_ndjxb")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 40.5123, 9.31548, -25.0543)
