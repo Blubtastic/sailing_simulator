@@ -419,7 +419,7 @@ script = ExtResource("9_mhpjh")
 transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, -120, 78.464, 120)
 projection = 1
 current = true
-size = 100.0
+size = 80.0
 
 [node name="WindParticles" parent="." instance=ExtResource("10_ndjxb")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 40.5123, 9.31548, -25.0543)
