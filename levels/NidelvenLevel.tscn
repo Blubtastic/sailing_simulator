@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://eh1culnsdp68"]
+[gd_scene load_steps=14 format=3 uid="uid://eh1culnsdp68"]
 
 [ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="1_806dl"]
 [ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://WorldLighting.tscn" id="1_swjyv"]
 [ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://Ocean.tscn" id="2_4wevg"]
 [ext_resource type="MeshLibrary" uid="uid://ju1ns6avwj1d" path="res://assets/MeshLibraries/GroundPieces.tres" id="3_806dl"]
+[ext_resource type="PackedScene" uid="uid://ctv6n5j12q74a" path="res://AlignParentToWind.tscn" id="4_n2y7h"]
 [ext_resource type="PackedScene" uid="uid://c5po3if78ju8v" path="res://assets/Flag.tscn" id="4_yd1kw"]
 [ext_resource type="Texture2D" uid="uid://b3kttpnyllr7t" path="res://assets/trondheim_satelite_photo.png" id="6_yd1kw"]
 [ext_resource type="MeshLibrary" uid="uid://dwrmwqqv8tjtj" path="res://assets/MeshLibraries/Trees.tres" id="7_yd1kw"]
@@ -37,6 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.39, 0, 93.5353)
 
 [node name="Ocean" parent="." instance=ExtResource("2_4wevg")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -29.7166, -0.5, 91.5744)
+
+[node name="AlignParentToWind2" parent="Ocean" instance=ExtResource("4_n2y7h")]
 
 [node name="FlyfotoNidelven" type="MeshInstance3D" parent="."]
 visible = false
