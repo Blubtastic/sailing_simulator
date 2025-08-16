@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sailing Simulator"
-run/main_scene="uid://eh1culnsdp68"
+run/main_scene="uid://bwkxujvmhja7u"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 

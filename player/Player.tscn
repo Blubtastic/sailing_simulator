@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=30 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player/player.gd" id="1_gskgj"]
 [ext_resource type="Script" uid="uid://dry5yurevj25p" path="res://player/restrain_hinge.gd" id="2_06mnu"]
 [ext_resource type="Script" uid="uid://cvdcik64c3u3j" path="res://player/constant_wind_force.gd" id="3_mhpjh"]
 [ext_resource type="ArrayMesh" uid="uid://ffl3y6ey0nad" path="res://assets/blender/exports/FrontSailPlane.res" id="4_ndjxb"]
 [ext_resource type="ArrayMesh" uid="uid://mxmadhuggkxj" path="res://assets/blender/exports/MainSailPlane2.res" id="5_5qrx2"]
+[ext_resource type="Script" uid="uid://cj7esipxqngvy" path="res://player/adjust_sail_stiffness.gd" id="5_b32pr"]
 [ext_resource type="PackedScene" uid="uid://6lthhj5fhopk" path="res://player/wind_zone/WindForSails.tscn" id="6_06mnu"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="6_b32pr"]
 [ext_resource type="PackedScene" uid="uid://dfyl3xkj6qdo1" path="res://player/boat_ui_wind/wind_speed_circle.tscn" id="7_hbkom"]
@@ -129,9 +130,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.6927, 0.688653)
 mesh = ExtResource("4_ndjxb")
 collision_layer = 256
 collision_mask = 0
-simulation_precision = 20
-total_mass = 2.01
-linear_stiffness = 0.2
+total_mass = 5.01
+linear_stiffness = 0.1
 damping_coefficient = 0.1
 pinned_points = [33, 1, 48, 93, 49, 3, 91, 87, 85, 83, 81, 79, 77]
 attachments/0/point_index = 33
@@ -173,6 +173,7 @@ attachments/11/offset = Vector3(-0.0143643, -0.00328636, -0.00227916)
 attachments/12/point_index = 77
 attachments/12/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D6")
 attachments/12/offset = Vector3(-0.0143643, 0.0036068, 0.0282869)
+script = ExtResource("5_b32pr")
 
 [node name="RopeMarkers" type="Node3D" parent="FrontSailAnchor/FrontSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0130518, -0.0932975, -1.26177)
@@ -265,8 +266,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0063
 mesh = ExtResource("5_5qrx2")
 collision_layer = 256
 collision_mask = 0
-simulation_precision = 20
-total_mass = 2.01
+total_mass = 5.01
 linear_stiffness = 0.1
 damping_coefficient = 0.1
 pinned_points = [28, 30, 32, 34, 36, 38, 42, 44, 29, 27, 22, 16, 11, 7, 4, 2, 0]
@@ -411,6 +411,7 @@ mesh = SubResource("PrismMesh_3tkgg")
 skeleton = NodePath("../..")
 
 [node name="WindForSails" parent="." instance=ExtResource("6_06mnu")]
+wind_force_magnitude = 20.0
 
 [node name="CameraPivot" type="Node3D" parent="."]
 script = ExtResource("9_mhpjh")
@@ -419,7 +420,7 @@ script = ExtResource("9_mhpjh")
 transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, -120, 78.464, 120)
 projection = 1
 current = true
-size = 80.0
+size = 41.964
 
 [node name="WindParticles" parent="." instance=ExtResource("10_ndjxb")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 40.5123, 9.31548, -25.0543)

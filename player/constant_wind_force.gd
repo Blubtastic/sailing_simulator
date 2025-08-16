@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-var wind_strength: float = 100.0  # Strength of the wind
+var wind_strength: float = 150.0  # Strength of the wind
 #var wind_direction: Vector3 = Vector3(-1, 0, -1)  # Direction of the wind (global coordinates)
 
 func _physics_process(_delta):
