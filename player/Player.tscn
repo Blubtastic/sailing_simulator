@@ -125,7 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.68829, 0.686489)
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 1.11071, -0.926699)
 shape = SubResource("ConvexPolygonShape3D_e80uo")
 
-[node name="FrontSailSoft" type="SoftBody3D" parent="FrontSailAnchor/FrontSailAnchor"]
+[node name="FrontSailSoft" type="SoftBody3D" parent="FrontSailAnchor/FrontSailAnchor" node_paths=PackedStringArray("parent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.6927, 0.688653)
 mesh = ExtResource("4_ndjxb")
 collision_layer = 256
@@ -174,6 +174,7 @@ attachments/12/point_index = 77
 attachments/12/spatial_attachment_path = NodePath("../RopeMarkers/Marker3D6")
 attachments/12/offset = Vector3(-0.0143643, 0.0036068, 0.0282869)
 script = ExtResource("5_b32pr")
+parent = NodePath("../../..")
 
 [node name="RopeMarkers" type="Node3D" parent="FrontSailAnchor/FrontSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0130518, -0.0932975, -1.26177)
@@ -261,7 +262,7 @@ script = ExtResource("3_mhpjh")
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0020752, 1.09743, 0.174762)
 shape = SubResource("ConvexPolygonShape3D_cxr5p")
 
-[node name="MainSailSoft" type="SoftBody3D" parent="MainSailAnchor/MainSailAnchor"]
+[node name="MainSailSoft" type="SoftBody3D" parent="MainSailAnchor/MainSailAnchor" node_paths=PackedStringArray("parent")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00632644, -4.47647, -1.54504)
 mesh = ExtResource("5_5qrx2")
 collision_layer = 256
@@ -322,6 +323,7 @@ attachments/16/point_index = 0
 attachments/16/spatial_attachment_path = NodePath("../../../Mast/Marker3D8")
 attachments/16/offset = Vector3(-0.00570294, -0.0185795, 0.0733274)
 script = ExtResource("5_b32pr")
+parent = NodePath("../../..")
 
 [node name="Boom" type="StaticBody3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58981, 0)

@@ -1,19 +1,14 @@
 extends SoftBody3D
+
 const SAIL_ANGLE_CURVE = preload("res://player/sail_angle_curve.tres")
+
+@export var parent: Node3D
 @export var MIN: int = 5
 @export var MAX: int = 15
-@onready var main_sail_anchor: Node3D = $"../../../MainSailAnchor"
 
 func _process(_delta: float) -> void:
-	pass
-	# Change simulation precision from 5 to 15 based on wind angle (5 is downwind, 15 is close hauled)
-	# property: simulation_precision
-	# reuse code from restrain_hinge.gd
-	
 	# Direction of boat
-	# TODO: get boat direction without referencing parent
-	var boat_direction = -main_sail_anchor.global_basis.z
-	
+	var boat_direction = -parent.global_basis.z
 	# Direction of wind
 	var radians = deg_to_rad(Globals.wind_direction)
 	var wind_direction = Vector3(sin(radians), 0, cos(radians)).normalized()
