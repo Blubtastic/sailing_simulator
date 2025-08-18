@@ -321,6 +321,7 @@ attachments/15/offset = Vector3(-0.00570294, 0.0120001, 0.0733274)
 attachments/16/point_index = 0
 attachments/16/spatial_attachment_path = NodePath("../../../Mast/Marker3D8")
 attachments/16/offset = Vector3(-0.00570294, -0.0185795, 0.0733274)
+script = ExtResource("5_b32pr")
 
 [node name="Boom" type="StaticBody3D" parent="MainSailAnchor/MainSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58981, 0)
