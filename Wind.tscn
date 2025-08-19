@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvkuc6rqfg87k"]
 
-[ext_resource type="PackedScene" uid="uid://ctv6n5j12q74a" path="res://AlignParentToWind.tscn" id="1_mq10k"]
+[ext_resource type="PackedScene" uid="uid://ctv6n5j12q74a" path="res://shared/AlignParentToWind.tscn" id="1_mq10k"]
 
 [sub_resource type="Curve" id="Curve_68pvr"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.135802, 0.314607), 0.0, 0.0, 0, 0, Vector2(0.753087, 0.359551), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

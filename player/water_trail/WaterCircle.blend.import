@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ecj2ue6a8dn3"
-path="res://.godot/imported/WaterCircle.blend-7d5e7d4f4d3e6ac4af1d6589e10e6e42.scn"
+path="res://.godot/imported/WaterCircle.blend-a58cf86ff27a2bdb9d7c518d63a15828.scn"
 
 [deps]
 
-source_file="res://assets/blender/Player/WaterCircle.blend"
-dest_files=["res://.godot/imported/WaterCircle.blend-7d5e7d4f4d3e6ac4af1d6589e10e6e42.scn"]
+source_file="res://player/water_trail/WaterCircle.blend"
+dest_files=["res://.godot/imported/WaterCircle.blend-a58cf86ff27a2bdb9d7c518d63a15828.scn"]
 
 [params]
 
@@ -40,7 +40,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://assets/blender/Player/WaterCircle.res"
+"save_to_file/path": "uid://bncqg8ptnk1ud"
 }
 }
 }

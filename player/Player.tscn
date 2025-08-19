@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfyl3xkj6qdo1" path="res://player/boat_ui_wind/wind_speed_circle.tscn" id="7_hbkom"]
 [ext_resource type="Script" uid="uid://b4f7ouytacisk" path="res://player/lock_camera_rotation.gd" id="9_mhpjh"]
 [ext_resource type="PackedScene" uid="uid://dvkuc6rqfg87k" path="res://Wind.tscn" id="10_ndjxb"]
-[ext_resource type="PackedScene" uid="uid://d3de10q52fi7j" path="res://assets/blender/Player/water_trail.tscn" id="12_b32pr"]
+[ext_resource type="PackedScene" uid="uid://d3de10q52fi7j" path="res://player/water_trail/water_trail.tscn" id="12_b32pr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kne1u"]
 radius = 0.05
@@ -424,10 +424,10 @@ script = ExtResource("9_mhpjh")
 transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, -120, 78.464, 120)
 projection = 1
 current = true
-size = 41.964
+size = 80.0
 
 [node name="WindParticles" parent="." instance=ExtResource("10_ndjxb")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 40.5123, 9.31548, -25.0543)
 
 [node name="WaterTrail" parent="." instance=ExtResource("12_b32pr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.1383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.456591, 5.818)
