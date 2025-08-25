@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvkuc6rqfg87k"]
+[gd_scene load_steps=10 format=3 uid="uid://dvkuc6rqfg87k"]
 
+[ext_resource type="Script" uid="uid://1iir4ev2g0dy" path="res://player/wind_particles.gd" id="1_3mexs"]
 [ext_resource type="PackedScene" uid="uid://ctv6n5j12q74a" path="res://shared/AlignParentToWind.tscn" id="1_mq10k"]
 
 [sub_resource type="Curve" id="Curve_68pvr"]
@@ -24,8 +25,6 @@ emission_shape = 3
 emission_box_extents = Vector3(1, 0.1, 1)
 direction = Vector3(0, 0, 1)
 spread = 0.0
-initial_velocity_min = 30.0
-initial_velocity_max = 30.0
 directional_velocity_min = 9.99998
 directional_velocity_max = 9.99998
 directional_velocity_curve = SubResource("CurveXYZTexture_njruw")
@@ -46,9 +45,10 @@ radial_segments = 4
 rings = 4
 
 [node name="WindParticles" type="Node3D"]
+script = ExtResource("1_3mexs")
 
 [node name="Wind" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -65)
 amount = 82
 lifetime = 6.0
 fixed_fps = 60
