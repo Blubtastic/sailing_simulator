@@ -76,14 +76,15 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 5, 0)
 
 [node name="Samfundet" type="Node3D" parent="NidelvenSør"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4442, 0, 406.139)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NidelvenSør/Samfundet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.7432, 14.131, 282.692)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92692, 14.131, -4.0108)
 mesh = SubResource("CylinderMesh_yd1kw")
 skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NidelvenSør/Samfundet"]
-transform = Transform3D(0.917089, 0.00269409, -0.398673, -0.00163832, 0.999994, 0.00298887, 0.398679, -0.00208791, 0.917088, 80.4121, -0.727739, 294.58)
+transform = Transform3D(0.917089, 0.00269409, -0.398673, -0.00163832, 0.999994, 0.00298887, 0.398679, -0.00208791, 0.917088, 14.742, -0.727739, 7.8772)
 mesh = SubResource("BoxMesh_n2y7h")
 skeleton = NodePath("../../..")
 
@@ -102,4 +103,4 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 3, 0)
 
 [node name="Trondheim" parent="." instance=ExtResource("9_0n8sc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.095, -15.6839, -34.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.095, -10.157, 66.2695)
