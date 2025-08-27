@@ -20,4 +20,9 @@ func _process(_delta: float) -> void:
 	# Tweak ratio - should go from 0-1 in the range 35-180 instead of 0-180
 	var sail_ratio = clamp(SAIL_ANGLE_CURVE.sample(sample_ratio), 0, 1)
 	
-	simulation_precision = MAX - ((MAX - MIN) * sail_ratio)
+	# Sail flickers in NO SAIL ZONE
+	if (sail_ratio == 0):
+		simulation_precision = MIN # set to 0 for fun effect
+	else:
+		simulation_precision = MAX - ((MAX - MIN) * sail_ratio)
+	

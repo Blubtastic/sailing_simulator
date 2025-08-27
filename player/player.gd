@@ -8,9 +8,9 @@ const ROTATE_FORCE = 1.5
 const ROTATE_MAX_SPEED = 0.4
 var rotate_speed = 0.0
 
-var acceleration = 10
-const SPEED_FORCE = 1.0
+const SPEED_FORCE = 1.2
 var speed = 0.0
+const HEEL_FORCE = 1.2
 
 func _physics_process(delta: float) -> void:
 	# ROTATION
@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	speed = lerpf(velocity.length(), wind_speed, SPEED_FORCE*delta)
 	velocity = velocity_direction * speed
 	move_and_slide()
+	
 	apply_heel(delta)
 
 # Rotate player along local x-axis based on boat and wind direction
@@ -50,5 +51,5 @@ func apply_heel(delta: float):
 	
 	# Set heel amount
 	var heel_angle = rads*direction
-	var final_heel_angle = heel_angle*speed/8 # 
-	rotation.z = lerpf(rotation.z, final_heel_angle, 1*delta)
+	var final_heel_angle = heel_angle*(speed/8)
+	rotation.z = lerpf(rotation.z, final_heel_angle, HEEL_FORCE*delta)
