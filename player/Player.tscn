@@ -375,6 +375,7 @@ shape = SubResource("BoxShape3D_xhfnw")
 
 [node name="WindSpeedCircle" parent="WindHUD" instance=ExtResource("7_hbkom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00678849, -2.38419e-07, 0.000713348)
+visible = false
 
 [node name="BoatMesh" type="Node3D" parent="."]
 visible = false
@@ -421,7 +422,7 @@ wind_force_magnitude = 20.0
 script = ExtResource("9_mhpjh")
 
 [node name="IsometricCamera" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, -120, 78.464, 120)
+transform = Transform3D(0.707107, 0.40558, -0.579228, 0, 0.819152, 0.573576, 0.707107, -0.40558, 0.579228, -120, 127.244, 120)
 projection = 1
 current = true
 size = 80.0
