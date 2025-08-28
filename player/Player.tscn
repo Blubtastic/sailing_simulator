@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cvm6vuoecgvb5"]
+[gd_scene load_steps=32 format=3 uid="uid://cvm6vuoecgvb5"]
 
 [ext_resource type="Script" uid="uid://cepwuspbm2c1d" path="res://player/player.gd" id="1_gskgj"]
 [ext_resource type="Script" uid="uid://dry5yurevj25p" path="res://player/restrain_hinge.gd" id="2_06mnu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b4f7ouytacisk" path="res://player/lock_camera_rotation.gd" id="9_mhpjh"]
 [ext_resource type="PackedScene" uid="uid://cj0621s76s8fj" path="res://player/WindParticles.tscn" id="10_ndjxb"]
 [ext_resource type="PackedScene" uid="uid://d3de10q52fi7j" path="res://player/water_trail/water_trail.tscn" id="12_b32pr"]
+[ext_resource type="PackedScene" uid="uid://bafdvtnrdx4ly" path="res://player/water_trail/WaterFoam.tscn" id="13_hbkom"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kne1u"]
 radius = 0.05
@@ -432,3 +433,15 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="WaterTrail" parent="." instance=ExtResource("12_b32pr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.456591, 5.818)
+
+[node name="WaterFoam" parent="." instance=ExtResource("13_hbkom")]
+transform = Transform3D(0.981383, 0, -0.19206, 0, 1, 0, 0.19206, 0, 0.981383, -0.0204298, 0, -3.13489)
+
+[node name="WaterFoam2" parent="." instance=ExtResource("13_hbkom")]
+transform = Transform3D(-0.971994, 0, -0.235006, 0, 1, 0, 0.235006, 0, -0.971994, -0.0204298, 0, -3.13489)
+
+[node name="WaterFoam3" parent="." instance=ExtResource("13_hbkom")]
+transform = Transform3D(0.977604, 0, -0.210455, 0, 1, 0, 0.210455, 0, 0.977604, 0.646698, 0, -1.14941)
+
+[node name="WaterFoam4" parent="." instance=ExtResource("13_hbkom")]
+transform = Transform3D(-0.989485, 0, -0.144632, 0, 1, 0, 0.144632, 0, -0.989485, -0.683932, 0, -1.17054)

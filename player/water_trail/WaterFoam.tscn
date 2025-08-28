@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bafdvtnrdx4ly"]
+
+[ext_resource type="ArrayMesh" uid="uid://dl2edr6sx1h8p" path="res://player/water_trail/WaterFoamEllipsis.res" id="1_bj2s8"]
+
+[sub_resource type="Gradient" id="Gradient_kh7n1"]
+offsets = PackedFloat32Array(0, 0.0990991, 0.310811, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qwjef"]
+gradient = SubResource("Gradient_kh7n1")
+
+[sub_resource type="Curve" id="Curve_q0xpv"]
+_data = [Vector2(0, 0), 0.0, 0.405915, 0, 0, Vector2(0.148594, 0.299864), 1.00824, 1.00824, 0, 0, Vector2(1, 1), 0.821051, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0bwat"]
+curve = SubResource("Curve_q0xpv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_msg8h"]
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(1, 0, 1)
+angle_min = -45.0
+angle_max = 45.0
+spread = 5.0
+initial_velocity_min = 6.0
+initial_velocity_max = 6.0
+angular_velocity_min = -60.0
+angular_velocity_max = 60.0
+gravity = Vector3(-10, 0, 0)
+damping_min = 5.0
+damping_max = 5.0
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_0bwat")
+color_ramp = SubResource("GradientTexture1D_qwjef")
+
+[node name="WaterFoam" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 16
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_msg8h")
+draw_pass_1 = ExtResource("1_bj2s8")
