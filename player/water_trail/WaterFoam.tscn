@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bafdvtnrdx4ly"]
+[gd_scene load_steps=8 format=3 uid="uid://bafdvtnrdx4ly"]
 
 [ext_resource type="ArrayMesh" uid="uid://dl2edr6sx1h8p" path="res://player/water_trail/WaterFoamEllipsis.res" id="1_bj2s8"]
+[ext_resource type="Script" uid="uid://ce5rpui80hopb" path="res://player/water_trail/water_foam.gd" id="1_kh7n1"]
 
 [sub_resource type="Gradient" id="Gradient_kh7n1"]
 offsets = PackedFloat32Array(0, 0.0990991, 0.310811, 1)
@@ -37,6 +38,7 @@ scale_curve = SubResource("CurveTexture_0bwat")
 color_ramp = SubResource("GradientTexture1D_qwjef")
 
 [node name="WaterFoam" type="Node3D"]
+script = ExtResource("1_kh7n1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 amount = 16
