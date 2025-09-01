@@ -434,14 +434,18 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 [node name="WaterTrail" parent="." instance=ExtResource("12_b32pr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.456591, 5.818)
 
-[node name="WaterFoam" parent="." instance=ExtResource("13_hbkom")]
-transform = Transform3D(0.981383, 0, -0.19206, 0, 1, 0, 0.19206, 0, 0.981383, -0.0204298, 0, -3.13489)
+[node name="WaterFoam" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_hbkom")]
+transform = Transform3D(0.978147, 0, -0.207912, 0, 1, 0, 0.207912, 0, 0.978147, -0.0204298, 0, -3.13489)
+player = NodePath("..")
 
-[node name="WaterFoam2" parent="." instance=ExtResource("13_hbkom")]
-transform = Transform3D(-0.971994, 0, -0.235006, 0, 1, 0, 0.235006, 0, -0.971994, -0.0204298, 0, -3.13489)
+[node name="WaterFoam2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_hbkom")]
+transform = Transform3D(-0.978148, 0, -0.207912, 0, 1, 0, 0.207912, 0, -0.978148, -0.0204298, 0, -3.13489)
+player = NodePath("..")
 
-[node name="WaterFoam3" parent="." instance=ExtResource("13_hbkom")]
-transform = Transform3D(0.977604, 0, -0.210455, 0, 1, 0, 0.210455, 0, 0.977604, 0.646698, 0, -1.14941)
+[node name="WaterFoam3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_hbkom")]
+transform = Transform3D(0.978148, 0, -0.207912, 0, 1, 0, 0.207912, 0, 0.978148, 0.280976, 0, -1.14941)
+player = NodePath("..")
 
-[node name="WaterFoam4" parent="." instance=ExtResource("13_hbkom")]
-transform = Transform3D(-0.989485, 0, -0.144632, 0, 1, 0, 0.144632, 0, -0.989485, -0.683932, 0, -1.17054)
+[node name="WaterFoam4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_hbkom")]
+transform = Transform3D(-0.978147, 0, -0.207912, 0, 1, 0, 0.207912, 0, -0.978147, -0.297935, 0, -1.13288)
+player = NodePath("..")
