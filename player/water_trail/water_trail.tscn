@@ -1,25 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3de10q52fi7j"]
+[gd_scene load_steps=8 format=3 uid="uid://cvkbk4m1vtxn5"]
 
 [ext_resource type="ArrayMesh" uid="uid://bncqg8ptnk1ud" path="res://player/water_trail/WaterCircle.res" id="1_716pc"]
 [ext_resource type="Script" uid="uid://dyrpuo06fxill" path="res://player/water_trail/water_trail.gd" id="1_peva7"]
 
-[sub_resource type="Curve" id="Curve_716pc"]
-_data = [Vector2(0, 0.403601), 0.0, 0.594841, 0, 0, Vector2(1, 1), 0.592342, 0.0, 0, 0]
+[sub_resource type="Gradient" id="Gradient_fiayr"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_peva7"]
+gradient = SubResource("Gradient_fiayr")
+
+[sub_resource type="Curve" id="Curve_oss5g"]
+_data = [Vector2(0, 0.402663), 0.0, 0.602724, 0, 0, Vector2(1, 1), 0.60531, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_vgn1k"]
-colors = PackedColorArray(0.768729, 0.768729, 0.768729, 1, 1, 1, 1, 0)
+[sub_resource type="CurveTexture" id="CurveTexture_121l8"]
+curve = SubResource("Curve_oss5g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lf8dw"]
+direction = Vector3(0, 0, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.2
+scale_max = 2.2
+scale_curve = SubResource("CurveTexture_121l8")
+color_ramp = SubResource("GradientTexture1D_peva7")
 
 [node name="WaterTrail" type="Node3D"]
 script = ExtResource("1_peva7")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-randomness = 1.0
-mesh = ExtResource("1_716pc")
-direction = Vector3(0, 0, 1)
-spread = 0.0
-gravity = Vector3(0, 0, 0)
-scale_amount_min = 2.2
-scale_amount_max = 2.2
-scale_amount_curve = SubResource("Curve_716pc")
-color_ramp = SubResource("Gradient_vgn1k")
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_lf8dw")
+draw_pass_1 = ExtResource("1_716pc")

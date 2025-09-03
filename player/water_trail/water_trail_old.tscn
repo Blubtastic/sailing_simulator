@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3de10q52fi7j"]
+
+[ext_resource type="ArrayMesh" uid="uid://bncqg8ptnk1ud" path="res://player/water_trail/WaterCircle.res" id="2_0pa3r"]
+
+[sub_resource type="Curve" id="Curve_716pc"]
+_data = [Vector2(0, 0.403601), 0.0, 0.594841, 0, 0, Vector2(1, 1), 0.592342, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_vgn1k"]
+colors = PackedColorArray(0.768729, 0.768729, 0.768729, 1, 1, 1, 1, 0)
+
+[node name="WaterTrail" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+randomness = 1.0
+mesh = ExtResource("2_0pa3r")
+direction = Vector3(0, 0, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_amount_min = 2.2
+scale_amount_max = 2.2
+scale_amount_curve = SubResource("Curve_716pc")
+color_ramp = SubResource("Gradient_vgn1k")
