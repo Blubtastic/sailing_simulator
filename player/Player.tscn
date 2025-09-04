@@ -90,10 +90,11 @@ size = Vector3(2.3, 4.75, 0.1)
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gskgj")
 
-[node name="FrontSailAnchor" type="Node3D" parent="." node_paths=PackedStringArray("hinge_joint")]
+[node name="FrontSailAnchor" type="Node3D" parent="." node_paths=PackedStringArray("hinge_joint", "boom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00148529, 0.871144, -3.28969)
 script = ExtResource("2_06mnu")
 hinge_joint = NodePath("HingeJoint3D")
+boom = NodePath("FrontSailAnchor")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="FrontSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, 0.261835, 0.965113, 0, -0.965113, 0.261835, 0, 4.65635, 1.21864)
@@ -236,10 +237,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.10339, 0.0768991)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258344, 0.0412711)
 shape = SubResource("CylinderShape3D_cxr5p")
 
-[node name="MainSailAnchor" type="Node3D" parent="." node_paths=PackedStringArray("hinge_joint")]
+[node name="MainSailAnchor" type="Node3D" parent="." node_paths=PackedStringArray("hinge_joint", "boom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 1.38011, 0.113167)
 script = ExtResource("2_06mnu")
 hinge_joint = NodePath("HingeJoint3D")
+boom = NodePath("MainSailAnchor")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="MainSailAnchor"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.20933, 0)

@@ -3,6 +3,7 @@ extends Node3D
 const SAIL_ANGLE_CURVE = preload("res://player/sail_angle_curve.tres")
 
 @export var hinge_joint: HingeJoint3D
+@export var boom: RigidBody3D
 @export var MIN: int = 0
 @export var MAX: int = 80
 
@@ -28,3 +29,19 @@ func _physics_process(_delta: float) -> void:
 	# Set joint limits
 	hinge_joint.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, joint_radians)
 	hinge_joint.set_param(HingeJoint3D.PARAM_LIMIT_LOWER, -joint_radians)
+	
+	# Dot product between wind and boom
+	var wind_boom_dot_product = wind_direction.dot(boom.global_basis.z)
+	print(wind_boom_dot_product)
+
+func flip_sail_begin(clockwise: bool):
+	var target_velocity = -57.3 if clockwise else 57.3
+	# enable motor. Default: false
+	hinge_joint.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
+	# set target_velocity. Default: 57.3
+	hinge_joint.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, target_velocity)
+	# set max impulse. Default: 1
+	hinge_joint.set_param(HingeJoint3D.PARAM_MOTOR_MAX_IMPULSE, 1)
+
+func flip_sail_end():
+	hinge_joint.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)
