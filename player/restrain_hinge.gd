@@ -3,6 +3,7 @@ extends Node3D
 const SAIL_ANGLE_CURVE = preload("res://player/sail_angle_curve.tres")
 
 @export var hinge_joint: HingeJoint3D
+@export var isFlipped: bool
 @export var boom: RigidBody3D
 @export var MIN: int = 0
 @export var MAX: int = 80
@@ -35,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	# Dot product between wind and boom
 	var wind_boom_dot_product = wind_direction.dot(boom.global_basis.z)
 	if (wind_boom_dot_product < -0.6):
-		flip_sail_begin(true)
+		flip_sail_begin(isFlipped)
 	else:
 		flip_sail_end()
 	print(wind_boom_dot_product)

@@ -94,6 +94,7 @@ script = ExtResource("1_gskgj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00148529, 0.871144, -3.28969)
 script = ExtResource("2_06mnu")
 hinge_joint = NodePath("HingeJoint3D")
+isFlipped = true
 boom = NodePath("FrontSailAnchor")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="FrontSailAnchor"]
