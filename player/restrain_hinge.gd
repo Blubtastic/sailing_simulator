@@ -30,12 +30,19 @@ func _physics_process(_delta: float) -> void:
 	hinge_joint.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, joint_radians)
 	hinge_joint.set_param(HingeJoint3D.PARAM_LIMIT_LOWER, -joint_radians)
 	
+	# TODO: find out whether to rotate clockwise or anticlockwise (is sail left or right)?
+	
 	# Dot product between wind and boom
 	var wind_boom_dot_product = wind_direction.dot(boom.global_basis.z)
+	if (wind_boom_dot_product < -0.6):
+		flip_sail_begin(true)
+	else:
+		flip_sail_end()
 	print(wind_boom_dot_product)
 
 func flip_sail_begin(clockwise: bool):
-	var target_velocity = -57.3 if clockwise else 57.3
+	var motor_velocity = 10
+	var target_velocity = -motor_velocity if clockwise else motor_velocity
 	# enable motor. Default: false
 	hinge_joint.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
 	# set target_velocity. Default: 57.3
