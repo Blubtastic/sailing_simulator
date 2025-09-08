@@ -2,10 +2,13 @@ extends Node3D
 
 const SAIL_ANGLE_CURVE = preload("res://player/sail_angle_curve.tres")
 
+@export var motor_strength = 0.3
 @export var hinge_joint: HingeJoint3D
 @export var boom: RigidBody3D
 @export var MIN: int = 0
 @export var MAX: int = 80
+
+var motor_active: bool = false
 
 func _physics_process(_delta: float) -> void:
 	# Direction of boat
@@ -32,26 +35,30 @@ func _physics_process(_delta: float) -> void:
 
 	flip_sails(wind_direction)
 
-func flip_sails(wind_direction: Vector3):
-		# TODO: put into function. Fix weird things.
-	# FLIP SAILS
+func calulate_is_clockwise():
 	var boom_rotation = boom.rotation.y
-	var is_clockwise = true if boom_rotation < 0 else false
-	var boom_dot = wind_direction.dot(boom.global_basis.z)
-	if (boom_dot < -0.65):
-		flip_sail_begin(is_clockwise)
-	else:
-		flip_sail_end()
+	return true if boom_rotation < 0 else false
+	
 
-func flip_sail_begin(clockwise: bool):
-	var motor_velocity = 5
+func flip_sails(wind_direction: Vector3):
+	var boom_dot = wind_direction.dot(boom.global_basis.z)
+	if (boom_dot < -0.6):
+		if (!motor_active):
+			enable_flip_motor(calulate_is_clockwise())
+			motor_active = true
+	else:
+		disable_flip_motor()
+		motor_active = false
+
+func enable_flip_motor(clockwise: bool):
+	var motor_velocity = 10
 	var target_velocity = -motor_velocity if clockwise else motor_velocity
 	# enable motor. Default: false
 	hinge_joint.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
 	# set target_velocity. Default: 57.3
 	hinge_joint.set_param(HingeJoint3D.PARAM_MOTOR_TARGET_VELOCITY, target_velocity)
 	# set max impulse. Default: 1
-	hinge_joint.set_param(HingeJoint3D.PARAM_MOTOR_MAX_IMPULSE, 1)
+	hinge_joint.set_param(HingeJoint3D.PARAM_MOTOR_MAX_IMPULSE, motor_strength)
 
-func flip_sail_end():
+func disable_flip_motor():
 	hinge_joint.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, false)

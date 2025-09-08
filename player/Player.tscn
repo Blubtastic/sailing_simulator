@@ -93,6 +93,7 @@ script = ExtResource("1_gskgj")
 [node name="FrontSailAnchor" type="Node3D" parent="." node_paths=PackedStringArray("hinge_joint", "boom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00148529, 0.871144, -3.28969)
 script = ExtResource("2_06mnu")
+motor_strength = 0.1
 hinge_joint = NodePath("HingeJoint3D")
 boom = NodePath("FrontSailAnchor")
 
