@@ -3,7 +3,6 @@ extends Node3D
 const SAIL_ANGLE_CURVE = preload("res://player/sail_angle_curve.tres")
 
 @export var hinge_joint: HingeJoint3D
-@export var isFlipped: bool
 @export var boom: RigidBody3D
 @export var MIN: int = 0
 @export var MAX: int = 80
@@ -30,19 +29,22 @@ func _physics_process(_delta: float) -> void:
 	# Set joint limits
 	hinge_joint.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, joint_radians)
 	hinge_joint.set_param(HingeJoint3D.PARAM_LIMIT_LOWER, -joint_radians)
-	
-	# TODO: find out whether to rotate clockwise or anticlockwise (is sail left or right)?
-	
-	# Dot product between wind and boom
-	var wind_boom_dot_product = wind_direction.dot(boom.global_basis.z)
-	if (wind_boom_dot_product < -0.6):
-		flip_sail_begin(isFlipped)
+
+	flip_sails(wind_direction)
+
+func flip_sails(wind_direction: Vector3):
+		# TODO: put into function. Fix weird things.
+	# FLIP SAILS
+	var boom_rotation = boom.rotation.y
+	var is_clockwise = true if boom_rotation < 0 else false
+	var boom_dot = wind_direction.dot(boom.global_basis.z)
+	if (boom_dot < -0.65):
+		flip_sail_begin(is_clockwise)
 	else:
 		flip_sail_end()
-	print(wind_boom_dot_product)
 
 func flip_sail_begin(clockwise: bool):
-	var motor_velocity = 10
+	var motor_velocity = 5
 	var target_velocity = -motor_velocity if clockwise else motor_velocity
 	# enable motor. Default: false
 	hinge_joint.set_flag(HingeJoint3D.FLAG_ENABLE_MOTOR, true)
