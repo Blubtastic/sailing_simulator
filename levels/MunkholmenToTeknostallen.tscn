@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7mohaj1x31er"]
+
+[ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://Ocean.tscn" id="1_baka4"]
+[ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="2_eg6c1"]
+[ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://WorldLighting.tscn" id="3_3ek2u"]
+[ext_resource type="PackedScene" uid="uid://bcd8e18np34kk" path="res://assets/blender/Trondheim.blend" id="4_c6cdt"]
+
+[node name="MunkholmenToTeknostallen" type="Node3D"]
+
+[node name="Ocean" parent="." instance=ExtResource("1_baka4")]
+
+[node name="Ocean2" parent="." instance=ExtResource("1_baka4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424, 0, 424)
+
+[node name="Trondheim" parent="." instance=ExtResource("4_c6cdt")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1580, -3, -3000)
+
+[node name="WorldLighting" parent="." instance=ExtResource("3_3ek2u")]
+
+[node name="Player" parent="." instance=ExtResource("2_eg6c1")]
