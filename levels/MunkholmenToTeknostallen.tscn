@@ -18,3 +18,4 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1580
 [node name="WorldLighting" parent="." instance=ExtResource("3_3ek2u")]
 
 [node name="Player" parent="." instance=ExtResource("2_eg6c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48539233, 0)
