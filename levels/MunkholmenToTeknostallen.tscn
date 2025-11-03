@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7mohaj1x31er"]
 
-[ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://Ocean.tscn" id="1_baka4"]
+[ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://visual/Ocean.tscn" id="1_baka4"]
 [ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="2_eg6c1"]
 [ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://WorldLighting.tscn" id="3_3ek2u"]
 [ext_resource type="PackedScene" uid="uid://bcd8e18np34kk" path="res://assets/blender/Trondheim.blend" id="4_c6cdt"]

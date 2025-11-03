@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="1_lbxsr"]
 [ext_resource type="PackedScene" uid="uid://cj0621s76s8fj" path="res://player/WindParticles.tscn" id="2_3vw7n"]
-[ext_resource type="PackedScene" uid="uid://dxb6dbpv60st0" path="res://TestingLevel.tscn" id="3_vmibe"]
+[ext_resource type="PackedScene" uid="uid://dxb6dbpv60st0" path="res://testing/TestingLevel.tscn" id="3_vmibe"]
 [ext_resource type="PackedScene" uid="uid://d372q328brype" path="res://assets/blender/Sailboat.blend" id="4_bvijt"]
 [ext_resource type="AudioStream" uid="uid://cb2of8jbt3pgm" path="res://assets/sound/2025-05-12.wav" id="5_3mabw"]
 

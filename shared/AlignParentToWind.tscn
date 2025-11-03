@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctv6n5j12q74a"]
 
-[ext_resource type="Script" uid="uid://bxf2tvx1a2vn7" path="res://align_parent_to_wind.gd" id="1_3o6w1"]
+[ext_resource type="Script" uid="uid://bxf2tvx1a2vn7" path="res://shared/align_parent_to_wind.gd" id="1_3o6w1"]
 
 [node name="AlignParentToWind" type="Node3D"]
 script = ExtResource("1_3o6w1")

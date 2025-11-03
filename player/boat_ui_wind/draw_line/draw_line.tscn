@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://qdc8nnf556a0"]
 
-[ext_resource type="Script" uid="uid://dlbyd4acamxbl" path="res://draw_line/draw_line.gd" id="1_m2xwf"]
+[ext_resource type="Script" uid="uid://dlbyd4acamxbl" path="res://player/boat_ui_wind/draw_line/draw_line.gd" id="1_m2xwf"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_m2xwf"]
 

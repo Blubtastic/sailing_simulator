@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceafak8wdkgby"]
 
-[ext_resource type="Shader" uid="uid://dfl6d2fvoji4" path="res://ocean.gdshader" id="1_cbg4c"]
+[ext_resource type="Shader" uid="uid://dfl6d2fvoji4" path="res://visual/ocean.gdshader" id="1_cbg4c"]
 [ext_resource type="PackedScene" uid="uid://ctv6n5j12q74a" path="res://shared/AlignParentToWind.tscn" id="2_20fyr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o8cs1"]
