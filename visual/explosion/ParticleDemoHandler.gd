@@ -1,9 +1,10 @@
 extends Node3D
 
 @export var ParticleEffect : PackedScene
-@export var SpawnSpread : float = 2.0
+@export var SpawnSpread : float = 0.0
+@export var PlayerCharacter: Player
 
-func _input(event):
+func _input(_event):
 	if (Input.is_action_just_pressed("Click")):
 		var newParticle = ParticleEffect.instantiate() as Node3D
 		add_child(newParticle)
@@ -11,4 +12,7 @@ func _input(event):
 		var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 		rng.randomize()
 		
-		newParticle.global_position = Vector3(rng.randf_range(-SpawnSpread, SpawnSpread), 0, rng.randf_range(-SpawnSpread, SpawnSpread))
+		var player_position = PlayerCharacter.global_position
+		newParticle.global_position = player_position
+		# TODO: Tweak spawn
+		# TODO: Create scene from Explosion and fix stuff

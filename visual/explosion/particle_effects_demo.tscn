@@ -150,6 +150,7 @@ mesh = SubResource("PlaneMesh_ckdvw")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5177, -0.0572913, 9.33494)
+visible = false
 material_override = SubResource("StandardMaterial3D_1x6ty")
 amount = 32
 lifetime = 8.0
