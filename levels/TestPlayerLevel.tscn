@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwkxujvmhja7u"]
 
 [ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="1_rduwc"]
-[ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://WorldLighting.tscn" id="2_exsrj"]
+[ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://visual/explosion/WorldLighting.tscn" id="2_exsrj"]
 
 [node name="Node3D" type="Node3D"]
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cvm6vuoecgvb5" path="res://player/Player.tscn" id="1_2qrad"]
 [ext_resource type="PackedScene" uid="uid://ceafak8wdkgby" path="res://visual/Ocean.tscn" id="2_3arl1"]
 [ext_resource type="MeshLibrary" uid="uid://ju1ns6avwj1d" path="res://assets/MeshLibraries/GroundPieces.tres" id="3_gusgq"]
-[ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://WorldLighting.tscn" id="4_15ftn"]
+[ext_resource type="PackedScene" uid="uid://8hmw8xlagwi4" path="res://visual/explosion/WorldLighting.tscn" id="4_15ftn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15ftn"]
 albedo_color = Color(1, 0, 0, 1)
