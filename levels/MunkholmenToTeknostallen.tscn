@@ -22,7 +22,14 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1580
 [node name="Player" parent="." instance=ExtResource("2_eg6c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48539233, 0)
 
-[node name="Explosion" type="Node3D" parent="." node_paths=PackedStringArray("PlayerCharacter")]
+[node name="Explosion" type="Node3D" parent="Player" node_paths=PackedStringArray("PlayerCharacter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60571694, 0.108445406)
 script = ExtResource("5_3ek2u")
 ParticleEffect = ExtResource("6_c6cdt")
-PlayerCharacter = NodePath("../Player")
+PlayerCharacter = NodePath("..")
+
+[node name="Explosion2" type="Node3D" parent="Player" node_paths=PackedStringArray("PlayerCharacter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56855845, 4.4011846)
+script = ExtResource("5_3ek2u")
+ParticleEffect = ExtResource("6_c6cdt")
+PlayerCharacter = NodePath("..")
